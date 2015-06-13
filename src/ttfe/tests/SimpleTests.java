@@ -62,7 +62,28 @@ public class SimpleTests {
 		
 	@Test
 	public void testAddPiece() {
-		assertEquals("There is no more Space left",true , game.isSpaceLeft());
+		assertTrue("The return number is less than 0",game.getNumPieces() >= 0);
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(1, 0, 2);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 2);
+		game.setPieceAt(3, 3, 2);
+		game.setPieceAt(3, 0, 2);
+		game.setPieceAt(2, 1, 2);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 2);
+		int y = game.getNumPieces();
+		game.addPiece();
+		assertTrue("getNumPieces has a malfunction",y == game.getNumPieces()); 
+		int x = game.getPieceAt(2,0) ;
+		if ( x == 2 || x ==4) ;
+		else assert(false) ; 
 	}
 	
 	@Test
@@ -125,11 +146,14 @@ public class SimpleTests {
 	@Test
 	public void testPerformMove1() {
 		assertTrue("PerformMove1",true == game.performMove(MoveDirection.NORTH));
+		game.setPieceAt(0, 0, 2);
+		assertTrue("PerformMove1",false == game.performMove(MoveDirection.NORTH));
 	}
 	
 	@Test
 	public void testPerformMove2() {
-		assertTrue("PerformMove2",true == game.performMove(MoveDirection.SOUTH)) ;
+		assertTrue("PerformMove2",true == game.performMove(MoveDirection.WEST)) ;
+		assertTrue("PerformMove2",false == game.performMove(MoveDirection.WEST));
 	}
 	
 	@Test
