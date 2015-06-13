@@ -19,11 +19,12 @@ import ttfe.TTFEFactory;
  */
 public class SimpleTests {
 
-	private SimulatorInterface game;
+	private SimulatorInterface game,game1;
 
 	@Before
 	public void setUp() {
 		game = TTFEFactory.createSimulator(4, 4, new Random(0));
+		game1 = TTFEFactory.createSimulator(4, 4, new Random(0));
 	}
 	
 	@Test
@@ -80,7 +81,7 @@ public class SimpleTests {
 		game.setPieceAt(2, 3, 2);
 		int y = game.getNumPieces();
 		game.addPiece();
-		assertTrue("getNumPieces has a malfunction",y == game.getNumPieces()); 
+		assertTrue("getNumPieces has a malfunction"+y + game.getNumPieces() ,y == game.getNumPieces()); 
 		int x = game.getPieceAt(2,0) ;
 		if ( x == 2 || x ==4) ;
 		else assert(false) ; 
@@ -145,20 +146,33 @@ public class SimpleTests {
 	
 	@Test
 	public void testPerformMove1() {
-		assertTrue("PerformMove1",true == game.performMove(MoveDirection.NORTH));
-		game.setPieceAt(0, 0, 2);
-		assertTrue("PerformMove1",false == game.performMove(MoveDirection.NORTH));
+		//moveNOrth funktioniert
+		game1.setPieceAt(1, 0, 2);
+		assertTrue("PerformMove1",true == game1.performMove(MoveDirection.NORTH));
+		int x = game1.getPieceAt(0,0) ; 
+		assert(x == 2) ;
+		assertTrue("PerformMove1",false == game1.performMove(MoveDirection.NORTH));
+		game1.setPieceAt(0,0,0);
 	}
 	
 	@Test
 	public void testPerformMove2() {
+		game1.setPieceAt(1,0,2) ;
 		assertTrue("PerformMove2",true == game.performMove(MoveDirection.WEST)) ;
+		int x = game1.getPieceAt(0,0) ; 
+		assert(x == 2) ;
 		assertTrue("PerformMove2",false == game.performMove(MoveDirection.WEST));
+		game1.setPieceAt(0, 0, 0);
 	}
 	
 	@Test
 	public void testPerformMove3() {
-		assertTrue("PerformMove3",true == game.performMove(MoveDirection.WEST)) ;
+		game1.setPieceAt(0,1,2) ;
+		assertTrue("PerformMove2",true == game.performMove(MoveDirection.WEST)) ;
+		int x = game1.getPieceAt(0,0) ; 
+		assert(x == 2) ;
+		assertTrue("PerformMove2",false == game.performMove(MoveDirection.WEST));
+		game1.setPieceAt(1, 0, 0);
 	}
 	
 	@Test
@@ -167,7 +181,9 @@ public class SimpleTests {
 	}
 	
 	@Test
+	//getpoints too
 	public void testIsSpaceLeft() {
+		assertEquals(" GetPoints Initial failed"+ game.getPoints(),game.getPoints() , 0 ) ;
 		game.setPieceAt(0, 1, 2);
 		game.setPieceAt(0, 2, 2);
 		game.setPieceAt(0, 3, 2);
@@ -184,13 +200,18 @@ public class SimpleTests {
 		game.setPieceAt(2, 2, 2);
 		game.setPieceAt(2, 3, 2);
 		game.setPieceAt(2, 0, 2);
+		game.performMove(MoveDirection.EAST);
+		int x = game.getPoints() ;
+		assertEquals(" GetPoints1 has a malfunction" + x ,x,32);
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(1, 0, 2);
 		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
 	}
 	
-	@Test
-	public void testGetPoints1() {
-		game.performMove(MoveDirection.EAST);
-		int x = game.getPoints() ;
-		assertEquals(" GetPoints1 has a malfunction",x,32);
-	}
 }
