@@ -77,13 +77,13 @@ public class SimpleTests {
 	
 	@Test
 	public void testGetNumMoves() {
-		assertTrue("The return number is less than 0",game.getNumMoves() > 0);
+		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
 		
 	}
 	
 	@Test
 	public void testGetNumPieces() {
-		assertTrue("The return number is less than 0",game.getNumPieces() > 0);
+		assertTrue("The return number is less than 0",game.getNumPieces() >= 0);
 		
 	}
 	
@@ -93,12 +93,19 @@ public class SimpleTests {
 	
 	}
 	
+	@Test
+	public void testSetPieceAt() {
+	int x = game.getNumPieces() ;
+	game.setPieceAt(1,1,1) ;
+	assertEquals("setPieceAt has a malfunction",game.getNumPieces() , x+1) ;
+	}
 	
 	@Test
-	public void testGetPieceAt() {}
-	
-	@Test
-	public void testSetPieceAt() {}
+	public void testGetPieceAt() {
+		int x = 92 ;
+		game.setPieceAt(1, 1, x);
+		assertTrue("GetPiece has a malfunction",x == game.getPieceAt(1,1)) ; 
+	}
 	
 	@Test
 	public void testIsMovePossible() {}
