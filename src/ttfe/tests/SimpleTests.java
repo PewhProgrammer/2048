@@ -90,6 +90,23 @@ public class SimpleTests {
 	@Test
 	public void testGetPoints() {
 		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
+		game.setPieceAt(1, 1, 1);
+		game.setPieceAt(1, 2, 1);
+		game.setPieceAt(1, 3, 1);
+		game.setPieceAt(1, 4, 1);
+		game.setPieceAt(2, 1, 1);
+		game.setPieceAt(2, 2, 1);
+		game.setPieceAt(2, 3, 1);
+		game.setPieceAt(2, 4, 1);
+		game.setPieceAt(3, 1, 1);
+		game.setPieceAt(3, 2, 1);
+		game.setPieceAt(3, 3, 1);
+		game.setPieceAt(3, 4, 1);
+		game.setPieceAt(4, 1, 1);
+		game.setPieceAt(4, 2, 1);
+		game.setPieceAt(3, 3, 1);
+		game.setPieceAt(4, 4, 1);
+		assertTrue("getPoints has a malfunction",game.getPoints() == 16) ;
 	
 	}
 	
@@ -107,18 +124,24 @@ public class SimpleTests {
 		assertTrue("GetPiece has a malfunction",x == game.getPieceAt(1,1)) ; 
 	}
 	
+	@Test
 	public void testAddPiece1() {
 		int x = game.getNumPieces() ;
 		game.addPiece();
-		assertTrue("AddPiece has a malfunction",x+1 == game.getNumPieces()) ;
-		
+		assertTrue("AddPiece has a malfunction",x+1 == game.getNumPieces()) ;	
 	}
 	
 	@Test
-	public void testIsMovePossible() {}
+	public void testIsMovePossible() {
+		
+		assertEquals(" isMovePossible has a malfunction",game.isMovePossible() , game.isSpaceLeft()) ;
+	}
 	
 	@Test
-	public void testIsSpaceLeft() {}
+	public void testIsSpaceLeft() {
+		int x = game.getNumPieces() ;
+		assertEquals("isSpaceLeft has a malfunction ",16,x) ;
+	}
 	
 	public void testPerformMove() {}
 }
