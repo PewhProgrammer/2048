@@ -8,6 +8,7 @@ import java.util.Random;
 import org.junit.Before;
 import org.junit.Test;
 
+import ttfe.MoveDirection;
 import ttfe.SimulatorInterface;
 import ttfe.TTFEFactory;
 
@@ -78,7 +79,7 @@ public class SimpleTests {
 	@Test
 	public void testGetNumMoves() {
 		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
-		
+		game.performMove(direction)
 		
 	}
 	
@@ -143,5 +144,23 @@ public class SimpleTests {
 		assertEquals("isSpaceLeft has a malfunction ",16,x) ;
 	}
 	
-	public void testPerformMove() {}
+	@Test
+	public void testPerformMove1() {
+		assertTrue("PerformMove1",true == game.performMove(MoveDirection.NORTH));
+	}
+	
+	@Test
+	public void testPerformMove2() {
+		assertTrue("PerformMove2",true == game.performMove(MoveDirection.SOUTH)) ;
+	}
+	
+	@Test
+	public void testPerformMove3() {
+		assertTrue("PerformMove3",true == game.performMove(MoveDirection.WEST)) ;
+	}
+	
+	@Test
+	public void testPerformMove4() {
+		assertTrue("PerformMove4",True == game.performMove(MoveDirection.EAST));
+	}
 }
