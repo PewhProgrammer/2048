@@ -60,6 +60,14 @@ public class SimpleTests {
 	public void testInitialMoves() {
 		assertEquals("The initial game moves does not match zero",0,game.getNumMoves()) ;
 	}
+	
+	@Test
+	public void testGetNumMoves() {
+		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
+		int x = game.getNumMoves() ;
+		game.performMove(MoveDirection.SOUTH) ;
+		assertTrue("getNumMoves has a malfunction",x+1 == game.getNumMoves()) ;
+	}
 		
 	@Test
 	public void testAddPiece() {
@@ -96,14 +104,6 @@ public class SimpleTests {
 	@Test
 	public void testGetBoardHeight() {
 		assertTrue("The Board Height is less than 0 " ,game.getBoardHeight() > 0) ;
-	}
-	
-	@Test
-	public void testGetNumMoves() {
-		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
-		int x = game.getNumMoves() ;
-		game.performMove(MoveDirection.SOUTH) ;
-		assertTrue("getNumMoves has a malfunction",x+1 == game.getNumMoves()) ;
 	}
 	
 	@Test
@@ -157,12 +157,12 @@ public class SimpleTests {
 	
 	@Test
 	public void testPerformMove2() {
-		game1.setPieceAt(1,0,2) ;
-		assertTrue("PerformMove2",true == game.performMove(MoveDirection.WEST)) ;
-		int x = game1.getPieceAt(0,0) ; 
+		game1.setPieceAt(0,2,2) ;
+		assertTrue("PerformMove2",true == game.performMove(MoveDirection.SOUTH)) ;
+		int x = game1.getPieceAt(0,3) ; 
 		assert(x == 2) ;
-		assertTrue("PerformMove2",false == game.performMove(MoveDirection.WEST));
-		game1.setPieceAt(0, 0, 0);
+		assertTrue("PerformMove2",false == game.performMove(MoveDirection.SOUTH));
+		game1.setPieceAt(0, 3, 0);
 	}
 	
 	@Test
@@ -172,12 +172,17 @@ public class SimpleTests {
 		int x = game1.getPieceAt(0,0) ; 
 		assert(x == 2) ;
 		assertTrue("PerformMove2",false == game.performMove(MoveDirection.WEST));
-		game1.setPieceAt(1, 0, 0);
+		game1.setPieceAt(0, 0, 0);
 	}
 	
 	@Test
 	public void testPerformMove4() {
-		assertTrue("PerformMove4",true == game.performMove(MoveDirection.EAST));
+		game1.setPieceAt(2,0,2) ;
+		assertTrue("PerformMove2",true == game.performMove(MoveDirection.EAST)) ;
+		int x = game1.getPieceAt(3,0) ; 
+		assert(x == 2) ;
+		assertTrue("PerformMove2",false == game.performMove(MoveDirection.EAST));
+		game1.setPieceAt(3, 0, 0);
 	}
 	
 	@Test
