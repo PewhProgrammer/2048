@@ -79,6 +79,7 @@ public class SimpleTests {
 	public void testGetNumMoves() {
 		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
 		
+		
 	}
 	
 	@Test
@@ -90,23 +91,6 @@ public class SimpleTests {
 	@Test
 	public void testGetPoints() {
 		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
-		game.setPieceAt(0, 1, 1);
-		game.setPieceAt(0, 2, 1);
-		game.setPieceAt(0, 3, 1);
-		game.setPieceAt(0, 0, 1);
-		game.setPieceAt(1, 1, 1);
-		game.setPieceAt(1, 2, 1);
-		game.setPieceAt(1, 3, 1);
-		game.setPieceAt(1, 0, 1);
-		game.setPieceAt(3, 1, 1);
-		game.setPieceAt(3, 2, 1);
-		game.setPieceAt(3, 3, 1);
-		game.setPieceAt(3, 0, 1);
-		game.setPieceAt(2, 1, 1);
-		game.setPieceAt(2, 2, 1);
-		game.setPieceAt(2, 3, 1);
-		game.setPieceAt(2, 0, 1);
-		assertTrue("getPoints has a malfunction",game.getPoints() == 16) ;
 	
 	}
 	
