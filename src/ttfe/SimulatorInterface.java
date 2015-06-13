@@ -13,7 +13,7 @@ public interface SimulatorInterface {
 	/**
 	 * @return Return the height of the board.
 	 */
-	public int getBoardHeight();
+	public int getBoardHeight() ; 
 
 	/**
 	 * @return Return the width of the board.
@@ -45,7 +45,7 @@ public interface SimulatorInterface {
 	/**
 	 * @return Return the number of points scored so far.
 	 */
-	public int getPoints();
+	public default int getPoints(){
 
 	/**
 	 * Test if a move in any direction is possible.
@@ -53,6 +53,8 @@ public interface SimulatorInterface {
 	 * @return Return true, if there is at least one possible move left that
 	 *         will move at least one piece (or merge two).
 	 */
+	return 0 ;
+	}
 	public boolean isMovePossible();
 
 	/**

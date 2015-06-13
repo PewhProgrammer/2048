@@ -27,7 +27,7 @@ public class SimpleTests {
 	
 	@Test
 	public void testInitialGamePoints() {
-		assertEquals("The initial game did not have zero points", 0,
+		assertEquals("The initial game did not have zero points", 0 ,
 				game.getPoints());
 	}
 	
@@ -36,5 +36,75 @@ public class SimpleTests {
 		assertTrue("The initial game board did not have correct height",
 				4 == game.getBoardHeight());
 	}
+	
+	@Test
+	public void testInitialBoardWidth(){
+		assertTrue("The initial game board did not have correct width",
+				4 == game.getBoardWidth()) ;
+	}
+	
+	@Test
+	public void testInitialPiece() {
+		assertEquals("The initial Pieces do not match two",2,game.getNumPieces()) ;
+	}
+	
+	@Test
+	
+	public void testInitialPoints() {
+		assertEquals("The initial Pieces do not match zero",0,game.getPoints());
+	}
 
+	@Test
+	public void testInitialMoves() {
+		assertEquals("The initial game moves does not match zero",0,game.getNumMoves());
+	}
+		
+	@Test
+	public void testAddPiece() {
+		assertEquals("There is no more Space left",true , game.isSpaceLeft());
+	}
+	
+	@Test
+	public void testGetBoardWidth() {
+		assertTrue("The Board Width is less than 0 " ,game.getBoardWidth() > 0) ;
+	}
+	
+	
+	@Test
+	public void testGetBoardHeight() {
+		assertTrue("The Board Height is less than 0 " ,game.getBoardHeight() > 0) ;
+	}
+	
+	@Test
+	public void testGetNumMoves() {
+		assertTrue("The return number is less than 0",game.getNumMoves() > 0);
+		
+	}
+	
+	@Test
+	public void testGetNumPieces() {
+		assertTrue("The return number is less than 0",game.getNumPieces() > 0);
+		
+	}
+	
+	@Test
+	public void testGetPoints() {
+		assertTrue("The returned points are less than 0 ",game.getPoints() > 0);
+	
+	}
+	
+	
+	@Test
+	public void testGetPieceAt() {}
+	
+	@Test
+	public void testSetPieceAt() {}
+	
+	@Test
+	public void testIsMovePossible() {}
+	
+	@Test
+	public void testIsSpaceLeft() {}
+	
+	public void testPerformMove() {}
 }
