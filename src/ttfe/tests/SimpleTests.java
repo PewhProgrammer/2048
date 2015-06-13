@@ -97,7 +97,7 @@ public class SimpleTests {
 		game.setPieceAt(2, 0, 0);
 		int y = game.getNumPieces();
 		game.addPiece();
-		assertTrue("getNumPieces has a malfunction"+y + game.getNumPieces() ,y == game.getNumPieces()); 
+		assertTrue("getNumPieces has a malfunction"+y + game.getNumPieces() ,y+1 == game.getNumPieces()); 
 		int x = game.getPieceAt(2,0) ;
 		if ( x == 2 || x ==4) ;
 		else assert(false) ; 
