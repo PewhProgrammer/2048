@@ -52,12 +52,12 @@ public class SimpleTests {
 	@Test
 	
 	public void testInitialPoints() {
-		assertEquals("The initial Pieces do not match zero",0,game.getPoints());
+		assertEquals("The initial Pieces do not match zero",0,game.getPoints()) ;
 	}
 
 	@Test
 	public void testInitialMoves() {
-		assertEquals("The initial game moves does not match zero",0,game.getNumMoves());
+		assertEquals("The initial game moves does not match zero",0,game.getNumMoves()) ;
 	}
 		
 	@Test
@@ -82,7 +82,6 @@ public class SimpleTests {
 		int x = game.getNumMoves() ;
 		game.performMove(MoveDirection.SOUTH) ;
 		assertTrue("getNumMoves has a malfunction",x+1 == game.getNumMoves()) ;
-		
 	}
 	
 	@Test
@@ -122,27 +121,6 @@ public class SimpleTests {
 		assertEquals(" isMovePossible has a malfunction",game.isMovePossible() , game.isSpaceLeft()) ;
 	}
 	
-	@Test
-	public void testIsSpaceLeft() {
-		game.setPieceAt(0, 1, 1);
-		game.setPieceAt(0, 2, 1);
-		game.setPieceAt(0, 3, 1);
-		game.setPieceAt(0, 0, 1);
-		game.setPieceAt(1, 1, 1);
-		game.setPieceAt(1, 2, 1);
-		game.setPieceAt(1, 3, 1);
-		game.setPieceAt(1, 0, 1);
-		game.setPieceAt(3, 1, 1);
-		game.setPieceAt(3, 2, 1);
-		game.setPieceAt(3, 3, 1);
-		game.setPieceAt(3, 0, 1);
-		game.setPieceAt(2, 1, 1);
-		game.setPieceAt(2, 2, 1);
-		game.setPieceAt(2, 3, 1);
-		game.setPieceAt(2, 0, 1);
-		int x = game.getNumPieces() ;
-		assertEquals("isSpaceLeft has a malfunction ",16,x) ;
-	}
 	
 	@Test
 	public void testPerformMove1() {
@@ -162,5 +140,33 @@ public class SimpleTests {
 	@Test
 	public void testPerformMove4() {
 		assertTrue("PerformMove4",true == game.performMove(MoveDirection.EAST));
+	}
+	
+	@Test
+	public void testIsSpaceLeft() {
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(1, 0, 2);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 2);
+		game.setPieceAt(3, 3, 2);
+		game.setPieceAt(3, 0, 2);
+		game.setPieceAt(2, 1, 2);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 2);
+		game.setPieceAt(2, 0, 2);
+		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
+	}
+	
+	@Test
+	public void testGetPoints1() {
+		game.performMove(MoveDirection.EAST);
+		int x = game.getPoints() ;
+		assertEquals(" GetPoints1 has a malfunction",x,32);
 	}
 }
