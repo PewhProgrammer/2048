@@ -79,7 +79,9 @@ public class SimpleTests {
 	@Test
 	public void testGetNumMoves() {
 		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
-		game.performMove(direction)
+		int x = game.getNumMoves() ;
+		game.performMove(MoveDirection.SOUTH) ;
+		assertTrue("getNumMoves has a malfunction",x+1 == game.getNumMoves()) ;
 		
 	}
 	
@@ -97,16 +99,14 @@ public class SimpleTests {
 	
 	@Test
 	public void testSetPieceAt() {
-	int x = game.getNumPieces() ;
-	game.setPieceAt(1,1,1) ;
-	
+
 	}
 	
 	@Test
 	public void testGetPieceAt() {
 		int x = 92 ;
 		game.setPieceAt(1, 1, x);
-		assertTrue("GetPiece has a malfunction",x == game.getPieceAt(1,1)) ; 
+		assertTrue("GetPiece/SetPiece has a malfunction",x == game.getPieceAt(1,1)) ; 
 	}
 	
 	@Test
@@ -161,6 +161,6 @@ public class SimpleTests {
 	
 	@Test
 	public void testPerformMove4() {
-		assertTrue("PerformMove4",True == game.performMove(MoveDirection.EAST));
+		assertTrue("PerformMove4",true == game.performMove(MoveDirection.EAST));
 	}
 }
