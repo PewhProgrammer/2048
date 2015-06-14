@@ -200,6 +200,14 @@ public class SimpleTests {
 		game.performMove(MoveDirection.EAST);
 		int x = game.getPoints() ;
 		assertEquals(" GetPoints1 has a malfunction" + x ,x,32);
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(1, 0, 2);
 		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
 	}
 	
