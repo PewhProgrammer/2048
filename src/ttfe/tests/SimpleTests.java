@@ -230,6 +230,7 @@ public class SimpleTests {
 		game.setPieceAt(1, 3, 2);
 		game.setPieceAt(1, 0, 2);
 		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
+		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible() , game.isSpaceLeft() , game.isMovePossible() );
 	}
 	
 	@Test
