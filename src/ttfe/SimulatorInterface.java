@@ -2,19 +2,26 @@ package ttfe;
 
 public interface SimulatorInterface {
 
-		class Simple implements SimulatorInterface {
+		public class Simple implements SimulatorInterface {
 			int points = 0 ;
 			int moves = 0 ; 
+			int width = 0 ;
+			int height = 0 ;
 			// TODO: Implement me.
 			int[][] array = new int[4][4] ;
- 			public void addPiece() {
+ 			public Simple(int width, int height) {
+				// TODO Auto-generated constructor stub
+ 				this.width = width ;
+ 				this.height = height ; 
+			}
+			public void addPiece() {
  				array[1][1] = 2 ; 
  			}
  			public int getBoardHeight() {
- 				return 4 ;
+ 				return width ;
  			}
  			public int getBoardWidth() {
- 				return 4 ;
+ 				return height ;
  			}
  			public int getNumMoves() {
  				return moves ;
@@ -23,9 +30,9 @@ public interface SimulatorInterface {
  				int i = 0 ;
  				int j = 0 ;
  				int pieces = 0 ;
- 				while (4 > i) {
+ 				while (width > i) {
  					j = 0 ;
- 					while (4 > j ){
+ 					while (height > j ){
  					if ( array[i][j] != 0 )
  						pieces++ ;
  					j++;

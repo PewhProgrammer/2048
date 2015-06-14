@@ -28,11 +28,8 @@ public class TTFEFactory {
 	
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
-		int points = 0 ;
-		int moves = 0 ; 
 		// TODO: Implement me.
-		int[][] array = new int[width][height] ;
- 		SimulatorInterface game ;
+ 		SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
  			
 		
 		return game ; 
