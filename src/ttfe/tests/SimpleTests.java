@@ -247,7 +247,7 @@ public class SimpleTests {
 		game.setPieceAt(3, 2, 7);
 		game.setPieceAt(3, 3, 8);
 		game.setPieceAt(3, 0, 9);
-		game.setPieceAt(2, 1, 0);
+		game.setPieceAt(2, 1, 66);
 		game.setPieceAt(2, 2, 21);
 		game.setPieceAt(2, 3, 42);
 		game.setPieceAt(2, 0, 52);
