@@ -137,6 +137,26 @@ public class SimpleTests {
 	}
 	
 	@Test
+	public void testSet(){
+		game1.setPieceAt(0, 1, 0);
+		game1.setPieceAt(0, 2, 0);
+		game1.setPieceAt(0, 3, 0);
+		game1.setPieceAt(0, 0, 0);
+		game1.setPieceAt(1, 1, 0);
+		game1.setPieceAt(1, 2, 0);
+		game1.setPieceAt(1, 3, 0);
+		game1.setPieceAt(1, 0, 0);
+		game1.setPieceAt(3, 1, 0);
+		game1.setPieceAt(3, 2, 0);
+		game1.setPieceAt(3, 3, 0);
+		game1.setPieceAt(3, 0, 0);
+		game1.setPieceAt(2, 1, 0);
+		game1.setPieceAt(2, 2, 0);
+		game1.setPieceAt(2, 3, 0);
+		game1.setPieceAt(2, 0, 0);
+	}
+	
+	@Test
 	public void testPerformMove1() {
 		//moveNOrth funktioniert
 		game1.setPieceAt(1, 0, 2);
