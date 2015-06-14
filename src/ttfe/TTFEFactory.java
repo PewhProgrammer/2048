@@ -24,17 +24,56 @@ public class TTFEFactory {
 	 * 
 	 * @return A 2048 simulator.
 	 */
+	
+	
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
+		int moves = 0 ; 
 		// TODO: Implement me.
-		SimulatorInterface game = new ;
-		game.width = width ;
-		game.height = height ;
-		assertTrue("The width of the board is less equal than 2 : " + width , game.width >= 2 );
-		assertTrue("The height of the board is less equal than 2 : " + height , game.height >= 2 );
-		x = width ;
-		y = height ;
-		return game;
+		int[][] array = new int[width][height] ;
+ 		SimulatorInterface game ;
+ 		class Simple implements SimulatorInterface {
+ 			public void addPiece() {
+ 				array[1][1] = 2 ; 
+ 			}
+ 			public int getBoardHeight() {
+ 				return height ;
+ 			}
+ 			public int getBoardWidth() {
+ 				return width ;
+ 			}
+ 			public int getNumMoves() {
+ 				return moves ;
+ 		}
+ 			public int getNumPieces(){
+ 				int i = 0 ;
+ 				int j = 0 ;
+ 				int pieces = 0 ;
+ 				while (width > i) {
+ 					j = 0 ;
+ 					while (height > j ){
+ 					if ( array[i][j] != 0 )
+ 						pieces++ ;
+ 					j++;
+ 					}
+ 				
+ 					i++ ;
+ 				}
+ 				
+ 				return pieces ;
+ 			}
+ 			
+ 			public int getPieceAt(int x,int y) {
+ 				return array[x][y]; 
+ 			}
+ 			
+ 		}
+ 		
+ 		array[1][1] = 2 ; 
+		
+		
+		
+		return game ; 
 	}
 
 	/**

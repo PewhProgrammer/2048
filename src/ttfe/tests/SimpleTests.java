@@ -134,7 +134,8 @@ public class SimpleTests {
 	}
 	
 	@Test
-	public void testSet(){
+	public void testPerformMove1() {
+		//moveNOrth funktioniert
 		game1.setPieceAt(0, 1, 0);
 		game1.setPieceAt(0, 2, 0);
 		game1.setPieceAt(0, 3, 0);
@@ -151,50 +152,36 @@ public class SimpleTests {
 		game1.setPieceAt(2, 2, 0);
 		game1.setPieceAt(2, 3, 0);
 		game1.setPieceAt(2, 0, 0);
-	}
-	
-	@Test
-	public void testPerformMove1() {
-		//moveNOrth funktioniert
-		game1.setPieceAt(1, 0, 2);
+		game1.setPieceAt(0, 1, 2);
 		assertTrue("PerformMove1",true == game1.performMove(MoveDirection.NORTH));
 		int x = game1.getPieceAt(0,0) ; 
-		assertEquals("Equals is wrong " + x , x == 2) ;
+		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove1",false == game1.performMove(MoveDirection.NORTH));
 		game1.setPieceAt(0,0,0);
 		
-		
-	}
-	
-	@Test
-	public void testPerformMove2() {
 		game1.setPieceAt(0,2,2) ;
 		assertTrue("PerformMove2",true == game1.performMove(MoveDirection.SOUTH)) ;
 		int x = game1.getPieceAt(0,3) ; 
-		assertEquals("Equals is wrong " + x , x == 2) ;
+		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove2",false == game1.performMove(MoveDirection.SOUTH));
 		game1.setPieceAt(0, 3, 0);
-	}
-	
-	@Test
-	public void testPerformMove3() {
+		
 		game1.setPieceAt(0,1,2) ;
 		assertTrue("PerformMove3",true == game1.performMove(MoveDirection.WEST)) ;
 		int x = game1.getPieceAt(0,0) ; 
-		assertEquals("Equals is wrong " + x , x == 2) ;
+		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove3",false == game1.performMove(MoveDirection.WEST));
 		game1.setPieceAt(0, 0, 0);
-	}
-	
-	@Test
-	public void testPerformMove4() {
+		
 		game1.setPieceAt(2,0,2) ;
 		assertTrue("PerformMove4",true == game1.performMove(MoveDirection.EAST)) ;
 		int x = game1.getPieceAt(3,0) ; 
-		assertEquals("Equals is wrong " + x , x == 2) ;
+		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove4",false == game1.performMove(MoveDirection.EAST));
 		game1.setPieceAt(3, 0, 0);
+		
 	}
+	
 	
 	@Test
 	//game.getPoints() game.getNumeMoves() and game.isSpaceleft() 
@@ -230,7 +217,7 @@ public class SimpleTests {
 		game.setPieceAt(1, 3, 2);
 		game.setPieceAt(1, 0, 2);
 		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
-		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible()+" " + game.isSpaceLeft() , game.isSpaceLeft() , game.isMovePossible() );
+		
 	}
 	
 	@Test
