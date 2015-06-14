@@ -25,7 +25,7 @@ public class TTFEFactory {
 	 * @return A 2048 simulator.
 	 */
 	
-	
+	//troll
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
 		// TODO: Implement me.
