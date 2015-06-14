@@ -161,21 +161,21 @@ public class SimpleTests {
 		
 		game1.setPieceAt(0,2,2) ;
 		assertTrue("PerformMove2",true == game1.performMove(MoveDirection.SOUTH)) ;
-		int x = game1.getPieceAt(0,3) ; 
+		 x = game1.getPieceAt(0,3) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove2",false == game1.performMove(MoveDirection.SOUTH));
 		game1.setPieceAt(0, 3, 0);
 		
 		game1.setPieceAt(0,1,2) ;
 		assertTrue("PerformMove3",true == game1.performMove(MoveDirection.WEST)) ;
-		int x = game1.getPieceAt(0,0) ; 
+		 x = game1.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove3",false == game1.performMove(MoveDirection.WEST));
 		game1.setPieceAt(0, 0, 0);
 		
 		game1.setPieceAt(2,0,2) ;
 		assertTrue("PerformMove4",true == game1.performMove(MoveDirection.EAST)) ;
-		int x = game1.getPieceAt(3,0) ; 
+		 x = game1.getPieceAt(3,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("PerformMove4",false == game1.performMove(MoveDirection.EAST));
 		game1.setPieceAt(3, 0, 0);
