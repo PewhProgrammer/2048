@@ -2,12 +2,73 @@ package ttfe;
 
 public interface SimulatorInterface {
 
-	public class Simple implements SimulatorInterface {
-		public void addPiece() {
-			array[1][1] = 2 ; 
-		} 
-		
-	}
+		class Simple implements SimulatorInterface {
+			int points = 0 ;
+			int moves = 0 ; 
+			// TODO: Implement me.
+			int[][] array = new int[4][4] ;
+ 			public void addPiece() {
+ 				array[1][1] = 2 ; 
+ 			}
+ 			public int getBoardHeight() {
+ 				return 4 ;
+ 			}
+ 			public int getBoardWidth() {
+ 				return 4 ;
+ 			}
+ 			public int getNumMoves() {
+ 				return moves ;
+ 		}
+ 			public int getNumPieces(){
+ 				int i = 0 ;
+ 				int j = 0 ;
+ 				int pieces = 0 ;
+ 				while (4 > i) {
+ 					j = 0 ;
+ 					while (4 > j ){
+ 					if ( array[i][j] != 0 )
+ 						pieces++ ;
+ 					j++;
+ 					}
+ 				
+ 					i++ ;
+ 				}
+ 				
+ 				return pieces ;
+ 			}
+ 			
+ 			public int getPieceAt(int x,int y) {
+ 				return array[x][y]; 
+ 			}
+ 			
+ 			public int getPoints(){
+ 				
+ 				return points ;
+ 			}
+ 			
+ 			public void setPieceAt(int x , int y,int z){
+ 				array[x][y] = z ;
+ 			}
+ 			
+ 			public boolean isMovePossible(){
+ 				return true
+ 			;}
+ 			
+ 			public boolean isMovePossible(MoveDirection direction){
+ 				return true;
+ 			}
+ 			
+ 			public boolean isSpaceLeft(){
+ 				return true;
+ 				}
+ 			
+ 			
+ 			public boolean performMove(MoveDirection direction){return true;}
+ 			
+ 			public void run(PlayerInterface player, UserInterface ui){}
+ 			
+ 		}
+	
 	/**
 	 * Put a new piece to an empty (and random) position on the board.
 	 *

@@ -28,50 +28,12 @@ public class TTFEFactory {
 	
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
+		int points = 0 ;
 		int moves = 0 ; 
 		// TODO: Implement me.
 		int[][] array = new int[width][height] ;
  		SimulatorInterface game ;
- 		class Simple implements SimulatorInterface {
- 			public void addPiece() {
- 				array[1][1] = 2 ; 
- 			}
- 			public int getBoardHeight() {
- 				return height ;
- 			}
- 			public int getBoardWidth() {
- 				return width ;
- 			}
- 			public int getNumMoves() {
- 				return moves ;
- 		}
- 			public int getNumPieces(){
- 				int i = 0 ;
- 				int j = 0 ;
- 				int pieces = 0 ;
- 				while (width > i) {
- 					j = 0 ;
- 					while (height > j ){
- 					if ( array[i][j] != 0 )
- 						pieces++ ;
- 					j++;
- 					}
- 				
- 					i++ ;
- 				}
- 				
- 				return pieces ;
- 			}
  			
- 			public int getPieceAt(int x,int y) {
- 				return array[x][y]; 
- 			}
- 			
- 		}
- 		
- 		array[1][1] = 2 ; 
-		
-		
 		
 		return game ; 
 	}
