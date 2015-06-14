@@ -166,7 +166,7 @@ public class SimpleTests {
 		assertTrue("PerformMove2",false == game1.performMove(MoveDirection.SOUTH));
 		game1.setPieceAt(0, 3, 0);
 		
-		game1.setPieceAt(0,1,2) ;
+		game1.setPieceAt(1,0,2) ;
 		assertTrue("PerformMove3",true == game1.performMove(MoveDirection.WEST)) ;
 		 x = game1.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
