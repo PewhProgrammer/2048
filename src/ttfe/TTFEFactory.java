@@ -30,7 +30,17 @@ public class TTFEFactory {
 			Random r) {
 		// TODO: Implement me.
  		SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
- 			
+ 		int n = 0 ;
+ 		while (2 > n){
+ 			int x = r.nextInt(width) ; 
+ 	 		int y = r.nextInt(height) ;
+ 			int zufall = r.nextInt(100) ;
+ 			if (zufall < 10) 
+ 				game.array[x][y] = 4 ;
+ 			else 
+ 				game.array[x][y] = 2 ;
+ 		n++ ; 
+ 		}
 		
 		return game ; 
 	}
