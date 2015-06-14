@@ -2,6 +2,9 @@ package ttfe;
 
 public interface SimulatorInterface {
 
+	
+	private int height ;
+	private int width ;
 	/**
 	 * Put a new piece to an empty (and random) position on the board.
 	 *
@@ -13,13 +16,16 @@ public interface SimulatorInterface {
 	/**
 	 * @return Return the height of the board.
 	 */
-	public int getBoardHeight() ; 
+	public int getBoardHeight() {
 
+	return game.height ;
+	}
 	/**
 	 * @return Return the width of the board.
 	 */
 	public int getBoardWidth();
 
+	return game.width ; 
 	/**
 	 * @return Return the number of moves made so far.
 	 */

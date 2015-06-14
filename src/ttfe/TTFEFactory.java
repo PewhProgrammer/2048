@@ -6,8 +6,12 @@ import ttfe.PlayerInterface;
 import ttfe.SimulatorInterface;
 import ttfe.UserInterface;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 public class TTFEFactory {
 
+	public static int x , y ; 
 	/**
 	 * Create a 2048 simulator.
 	 * 
@@ -23,7 +27,14 @@ public class TTFEFactory {
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
 		// TODO: Implement me.
-		return null;
+		SimulatorInterface game = new ;
+		game.width = width ;
+		game.height = height ;
+		assertTrue("The width of the board is less equal than 2 : " + width , game.width >= 2 );
+		assertTrue("The height of the board is less equal than 2 : " + height , game.height >= 2 );
+		x = width ;
+		y = height ;
+		return game;
 	}
 
 	/**
