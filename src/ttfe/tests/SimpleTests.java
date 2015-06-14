@@ -230,12 +230,27 @@ public class SimpleTests {
 		game.setPieceAt(1, 3, 2);
 		game.setPieceAt(1, 0, 2);
 		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
-		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible() , game.isSpaceLeft() , game.isMovePossible() );
+		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible()+" " + game.isSpaceLeft() , game.isSpaceLeft() , game.isMovePossible() );
 	}
 	
 	@Test
-	public void testIsMovePossible() {
-		assertEquals(" isMovePossible has a malfunction",game.isMovePossible() , game.isSpaceLeft()) ;
+	public void testisMovePossible() {
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 3);
+		game.setPieceAt(0, 3, 4);
+		game.setPieceAt(0, 0, 16);
+		game.setPieceAt(1, 1, 32);
+		game.setPieceAt(1, 2, 64);
+		game.setPieceAt(1, 3, 128);
+		game.setPieceAt(1, 0, 5);
+		game.setPieceAt(3, 1, 6);
+		game.setPieceAt(3, 2, 7);
+		game.setPieceAt(3, 3, 8);
+		game.setPieceAt(3, 0, 9);
+		game.setPieceAt(2, 1, 0);
+		game.setPieceAt(2, 2, 21);
+		game.setPieceAt(2, 3, 42);
+		game.setPieceAt(2, 0, 52);
+		assertEquals("isMovePossible has a malfunction"+ game.isMovePossible() , false , game.isMovePossible()) ;
 	}
-	
 }
