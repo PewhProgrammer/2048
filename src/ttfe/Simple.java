@@ -22,7 +22,7 @@ public class Simple implements SimulatorInterface {
 	
 	
 	public void addPiece() {
-			array[1][1] = 2 ; 
+			this.array[1][1] = 2 ; 
 		}
 		public int getBoardHeight() {
 			return this.width ;
@@ -31,16 +31,16 @@ public class Simple implements SimulatorInterface {
 			return this.height ;
 		}
 		public int getNumMoves() {
-			return moves ;
+			return this.moves ;
 	}
 		public int getNumPieces(){
 			int i = 0 ;
 			int j = 0 ;
 			int pieces = 0 ;
-			while (width > i) {
+			while (this.width > i) {
 				j = 0 ;
-				while (height > j ){
-				if ( array[i][j] != 0 )
+				while (this.height > j ){
+				if ( this.array[i][j] != 0 )
 					pieces++ ;
 				j++;
 				}
@@ -52,12 +52,12 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public int getPieceAt(int x,int y) {
-			return array[x][y]; 
+			return this.array[x][y]; 
 		}
 		
 		public int getPoints(){
 			
-			return points ;
+			return this.points ;
 		}
 		
 		public void setPieceAt(int x , int y,int z){
