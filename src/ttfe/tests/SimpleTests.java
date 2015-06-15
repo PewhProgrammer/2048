@@ -153,31 +153,39 @@ public class SimpleTests {
 		game1.setPieceAt(2, 3, 0);
 		game1.setPieceAt(2, 0, 0);
 		game1.setPieceAt(0, 1, 2);
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible() ,true == game1.isMovePossible(MoveDirection.NORTH));
 		assertTrue("PerformMove1",true == game1.performMove(MoveDirection.NORTH));
 		int x = game1.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible(MoveDirection.NORTH),false == game1.isMovePossible(MoveDirection.NORTH));
 		assertTrue("PerformMove1",false == game1.performMove(MoveDirection.NORTH));
 		game1.setPieceAt(0,0,0);
 		
 		game1.setPieceAt(0,2,2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible() ,true == game1.isMovePossible(MoveDirection.SOUTH));
 		assertTrue("PerformMove2",true == game1.performMove(MoveDirection.SOUTH)) ;
 		 x = game1.getPieceAt(0,3) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible(MoveDirection.SOUTH),false == game1.isMovePossible(MoveDirection.SOUTH));
 		assertTrue("PerformMove2",false == game1.performMove(MoveDirection.SOUTH));
 		game1.setPieceAt(0, 3, 0);
 		
 		game1.setPieceAt(1,0,2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible() ,true == game1.isMovePossible(MoveDirection.WEST));
 		boolean y = game1.performMove(MoveDirection.WEST) ;
 		assertTrue("PerformMove3 " + y  ,true == y) ;
 		 x = game1.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible(MoveDirection.WEST),false == game1.isMovePossible(MoveDirection.WEST));
 		assertTrue("PerformMove3 " +" 2 " + game1.performMove(MoveDirection.WEST),false == game1.performMove(MoveDirection.WEST));
 		game1.setPieceAt(0, 0, 0);
 		//jo
 		game1.setPieceAt(2,0,2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible() ,true == game1.isMovePossible(MoveDirection.EAST));
 		assertTrue("PerformMove4",true == game1.performMove(MoveDirection.EAST)) ;
 		 x = game1.getPieceAt(3,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
+		assertTrue("IsMovePossible Direction " + game1.isMovePossible(MoveDirection.EAST),false == game1.isMovePossible(MoveDirection.EAST));
 		assertTrue("PerformMove4",false == game1.performMove(MoveDirection.EAST));
 		game1.setPieceAt(3, 0, 0);
 		
