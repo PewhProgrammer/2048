@@ -5,6 +5,7 @@ import java.util.Random;
 import ttfe.PlayerInterface;
 import ttfe.SimulatorInterface;
 import ttfe.UserInterface;
+import ttfe.Simple;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,19 +29,9 @@ public class TTFEFactory {
 	//troll
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
-		// TODO: Implement me.
- 		SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
- 		int n = 0 ;
- 		while (2 > n){
- 			int x = r.nextInt(width) ; 
- 	 		int y = r.nextInt(height) ;
- 			int zufall = r.nextInt(100) ;
- 			if (zufall < 10) 
- 				game.array[x][y] = 4 ;
- 			else 
- 				game.array[x][y] = 2 ;
- 		n++ ; 
- 		}
+		SimulatorInterface game = new Simple(width,height,r) ; 
+ 		//SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
+ 		
 		
 		return game ; 
 	}

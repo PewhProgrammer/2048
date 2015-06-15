@@ -19,51 +19,62 @@ import ttfe.TTFEFactory;
  */
 public class SimpleTests {
 
-	private SimulatorInterface game,game1;
+	private SimulatorInterface game,game1,game2;
 
 	@Before
 	public void setUp() {
 		game = TTFEFactory.createSimulator(4, 4, new Random(0));
 		game1 = TTFEFactory.createSimulator(4, 4, new Random(0));
+		game2 = TTFEFactory.createSimulator(5, 5 , new Random(0) ) ;
 	}
 	
 	@Test
 	public void testInitialGamePoints() {
 		assertEquals("The initial game did not have zero points", 0 ,
 				game.getPoints());
+		assertEquals("The initial game did not have zero points", 0 ,
+				game2.getPoints());
 	}
 	
 	@Test
 	public void testInitialBoardHeight() {
 		assertTrue("The initial game board did not have correct height",
-				4 == game.getBoardHeight());
+				4 == game2.getBoardHeight());
+		assertTrue("The initial game board did not have correct height",
+				5 == game2.getBoardHeight());
 	}
 	
 	@Test
 	public void testInitialBoardWidth(){
 		assertTrue("The initial game board did not have correct width",
 				4 == game.getBoardWidth()) ;
+		assertTrue("The initial game board did not have correct width",
+				5 == game.getBoardWidth()) ;
 	}
 	
 	@Test
 	public void testInitialPiece() {
 		assertEquals("The initial Pieces do not match two",2,game.getNumPieces()) ;
+		assertEquals("The initial Pieces do not match two",2,game2.getNumPieces()) ;
 	}
 	
 	@Test
 	
 	public void testInitialPoints() {
 		assertEquals("The initial Pieces do not match zero",0,game.getPoints()) ;
+		assertEquals("The initial Pieces do not match zero",0,game2.getPoints()) ;
 	}
 
 	@Test
 	public void testInitialMoves() {
 		assertEquals("The initial game moves does not match zero",0,game.getNumMoves()) ;
+		assertEquals("The initial game moves does not match zero",0,game2.getNumMoves()) ;
 	}
 	
 	@Test
 	public void testGetNumMoves() {
 		assertTrue("The return number is less than 0",game.getNumMoves() >= 0);
+		assertTrue("The return number is less than 0",game2.getNumMoves() >= 0);
 	}
 	
 	@Test
@@ -71,6 +82,9 @@ public class SimpleTests {
 		int x = game.getNumPieces() ;
 		game.addPiece();
 		assertTrue("AddPiece has a malfunction",x+1 == game.getNumPieces()) ;	
+		int y = game2.getNumPieces() ;
+		game2.addPiece();
+		assertTrue("AddPiece has a malfunction",y+1 == game2.getNumPieces()) ;
 	}
 		
 	@Test
@@ -103,27 +117,26 @@ public class SimpleTests {
 	@Test
 	public void testGetBoardWidth() {
 		assertTrue("The Board Width is less than 0 " ,game.getBoardWidth() > 0) ;
+		assertTrue("The Board Width is less than 0 " ,game2.getBoardWidth() > 0) ;
 	}
 	
 	
 	@Test
 	public void testGetBoardHeight() {
 		assertTrue("The Board Height is less than 0 " ,game.getBoardHeight() > 0) ;
+		assertTrue("The Board Height is less than 0 " ,game2.getBoardHeight() > 0) ;
 	}
 	
 	@Test
 	public void testGetNumPieces() {
 		assertTrue("The return number is less than 0",game.getNumPieces() >= 0);
+		assertTrue("The return number is less than 0",game2.getNumPieces() >= 0);
 	}
 	
 	@Test
 	public void testGetPoints() {
 		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
-	}
-	
-	@Test
-	public void testSetPieceAt() {
-
+		assertTrue("The returned points are less than 0 ",game2.getPoints() >= 0);
 	}
 	
 	@Test
@@ -131,6 +144,8 @@ public class SimpleTests {
 		int x = 92 ;
 		game.setPieceAt(1, 1, x);
 		assertTrue("GetPiece/SetPiece has a malfunction",x == game.getPieceAt(1,1)) ; 
+		game2.setPieceAt(4, 4, x);
+		assertTrue("GetPiece/SetPiece has a malfunction",x == game.getPieceAt(4,4)) ;
 	}
 	
 	@Test
