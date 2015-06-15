@@ -1,6 +1,7 @@
 package ttfe;
 
 import java.util.Random;
+import ttfe.SimulatorInterface;
 
 public class Simple implements SimulatorInterface {
 	int points = 0 ;
@@ -10,21 +11,7 @@ public class Simple implements SimulatorInterface {
 	Random r ;
 	int n = 0 ; 
 	// TODO: Implement me.
-	int[][] array = new int[4][4] ;
-	{
-		
-		while (2 > n){
-			int x = r.nextInt(width) ; 
-	 		int y = r.nextInt(height) ;
-			int zufall = r.nextInt(100) ;
-			if (zufall < 10) 
-				this.array[x][y] = 4 ;
-			else 
-				this.array[x][y] = 2 ;
-		n++ ; 
-		
-		}
-	}
+	int[][] array = new int[width][height] ;
 	
 	public Simple(int width, int height,Random r) {
 		// TODO Auto-generated constructor stub
@@ -38,10 +25,10 @@ public class Simple implements SimulatorInterface {
 			array[1][1] = 2 ; 
 		}
 		public int getBoardHeight() {
-			return width ;
+			return this.width ;
 		}
 		public int getBoardWidth() {
-			return height ;
+			return this.height ;
 		}
 		public int getNumMoves() {
 			return moves ;

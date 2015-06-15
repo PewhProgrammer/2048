@@ -29,6 +29,10 @@ public class SimpleTests {
 	}
 	
 	@Test
+	public void testlol(){
+		assertTrue("falsch ", game.getBoardHeight() == 4) ; 
+	}
+	@Test
 	public void testInitialGamePoints() {
 		assertEquals("The initial game did not have zero points", 0 ,
 				game.getPoints());
@@ -38,9 +42,9 @@ public class SimpleTests {
 	
 	@Test
 	public void testInitialBoardHeight() {
-		assertTrue("The initial game board did not have correct height",
-				4 == game2.getBoardHeight());
-		assertTrue("The initial game board did not have correct height",
+		assertTrue("The initial game1 board did not have correct height",
+				4 == game1.getBoardHeight());
+		assertTrue("The initial game2 board did not have correct height",
 				5 == game2.getBoardHeight());
 	}
 	
@@ -49,7 +53,7 @@ public class SimpleTests {
 		assertTrue("The initial game board did not have correct width",
 				4 == game.getBoardWidth()) ;
 		assertTrue("The initial game board did not have correct width",
-				5 == game.getBoardWidth()) ;
+				5 == game2.getBoardWidth()) ;
 	}
 	
 	@Test

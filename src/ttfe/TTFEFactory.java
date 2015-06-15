@@ -11,8 +11,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class TTFEFactory {
-
-	public static int x , y ; 
 	/**
 	 * Create a 2048 simulator.
 	 * 
@@ -31,8 +29,7 @@ public class TTFEFactory {
 			Random r) {
 		SimulatorInterface game = new Simple(width,height,r) ; 
  		//SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
- 		
-		
+ 		//assertTrue("Falsch",  (game.getBoardHeight()) ==  ) ; 
 		return game ; 
 	}
 
