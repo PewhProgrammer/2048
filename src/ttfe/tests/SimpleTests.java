@@ -223,21 +223,22 @@ public class SimpleTests {
 	
 	@Test
 	public void testisMovePossible() {
-		game.setPieceAt(0, 1, 2);
-		game.setPieceAt(0, 2, 3);
-		game.setPieceAt(0, 3, 4);
-		game.setPieceAt(0, 0, 16);
+		assertEquals("isMovePossible has a malfunction " , true , game.isMovePossible() ) ; 
+		game.setPieceAt(0, 1, 4);
+		game.setPieceAt(0, 2, 8);
+		game.setPieceAt(0, 3, 16);
+		game.setPieceAt(0, 0, 2);
 		game.setPieceAt(1, 1, 32);
-		game.setPieceAt(1, 2, 64);
-		game.setPieceAt(1, 3, 128);
-		game.setPieceAt(1, 0, 5);
+		game.setPieceAt(1, 2, 8);
+		game.setPieceAt(1, 3, 16);
+		game.setPieceAt(1, 0, 4);
 		game.setPieceAt(3, 1, 6);
 		game.setPieceAt(3, 2, 7);
-		game.setPieceAt(3, 3, 8);
+		game.setPieceAt(3, 3, 16);
 		game.setPieceAt(3, 0, 9);
 		game.setPieceAt(2, 1, 66);
 		game.setPieceAt(2, 2, 21);
-		game.setPieceAt(2, 3, 42);
+		game.setPieceAt(2, 3, 416);
 		game.setPieceAt(2, 0, 52);
 		assertEquals("isMovePossible has a malfunction"+ game.isMovePossible() , false , game.isMovePossible()) ;
 	}
