@@ -173,6 +173,8 @@ public class SimpleTests {
 		game.setPieceAt(0, 1, 2);
 		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.NORTH));
 		assertTrue("PerformMove1",true == game.performMove(MoveDirection.NORTH));
+		int f = game.getPieceAt(0,1) ;
+		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		int x = game.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.NORTH),false == game.isMovePossible(MoveDirection.NORTH));
@@ -183,6 +185,8 @@ public class SimpleTests {
 		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.SOUTH));
 		assertTrue("PerformMove2",true == game.performMove(MoveDirection.SOUTH)) ;
 		 x = game.getPieceAt(0,3) ; 
+		 f = game.getPieceAt(0,2) ;
+		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.SOUTH),false == game.isMovePossible(MoveDirection.SOUTH));
 		assertTrue("PerformMove2",false == game.performMove(MoveDirection.SOUTH));
@@ -192,6 +196,8 @@ public class SimpleTests {
 		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.WEST));
 		boolean y = game.performMove(MoveDirection.WEST) ;
 		assertTrue("PerformMove3 " + y  ,true == y) ;
+		int f = game.getPieceAt(1,0) ;
+		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		 x = game.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.WEST),false == game.isMovePossible(MoveDirection.WEST));
@@ -201,6 +207,8 @@ public class SimpleTests {
 		game.setPieceAt(2,0,2) ;
 		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.EAST));
 		assertTrue("PerformMove4",true == game.performMove(MoveDirection.EAST)) ;
+		f = game.getPieceAt(0,1) ;
+		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		 x = game.getPieceAt(3,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
 		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.EAST),false == game.isMovePossible(MoveDirection.EAST));

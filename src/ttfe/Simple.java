@@ -11,13 +11,14 @@ public class Simple implements SimulatorInterface {
 	Random r ;
 	int n = 0 ; 
 	// TODO: Implement me.
-	int[][] array = new int[width][height] ;
+	int[][] array ;
 	
 	public Simple(int width, int height,Random r) {
 		// TODO Auto-generated constructor stub
 			this.width = width ;
 			this.height = height ; 
 			this.r = r ;
+		    array = new int[width][height] ;
 	}
 	
 	
@@ -52,7 +53,7 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public int getPieceAt(int x,int y) {
-			return this.array[x][y]; 
+			return this.array[1][1]; 
 		}
 		
 		public int getPoints(){
