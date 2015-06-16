@@ -296,6 +296,7 @@ public class SimpleTests {
 	
 	}
 	
+	@Test
 	public void testFullisMovePossible() {
 		game.setPieceAt(0, 1, 2);
 		game.setPieceAt(0, 2, 2);
