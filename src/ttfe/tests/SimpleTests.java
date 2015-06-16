@@ -243,6 +243,12 @@ public class SimpleTests {
 		assertTrue("getNumMoves has a malfunction",y+1 == game.getNumMoves()) ;
 	}
 	
+	@Test 
+	public void testMaxMoves(){
+		int x = game.getNumMoves();
+		assertTrue("The maximum number of moves has overflowed " , x <= 131038) ;
+	}
+	
 	@Test
 	public void testGetPoints() {
 		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
@@ -266,6 +272,12 @@ public class SimpleTests {
 		game.performMove(MoveDirection.EAST);
 		int x = game.getPoints();
 		assertEquals(" GetPoints1 has a malfunction" + x ,x,32);
+	}
+	
+	@Test
+	public void testMaxPoints() {
+		int x = game.getPoints() ;
+		assertTrue("MaxPoints is overflowed " , 3932156 == x) ; 
 	}
 	
 	@Test
