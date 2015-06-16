@@ -149,7 +149,7 @@ public class SimpleTests {
 		game.setPieceAt(1, 1, x);
 		assertTrue("GetPiece/SetPiece has a malfunction" +  x + game.getPieceAt(3,3),x == game.getPieceAt(1,1)) ; 
 		game2.setPieceAt(3, 3, x);
-		assertTrue("GetPiece/SetPiece has a malfunction"+  x + game.getPieceAt(3,3) ,x == game.getPieceAt(3,3)) ;
+		assertTrue("GetPiece/SetPiece has a malfunction"+  x + game2.getPieceAt(3,3) ,x == game2.getPieceAt(3,3)) ;
 	}
 	
 	@Test
