@@ -268,5 +268,32 @@ public class SimpleTests {
 		game.setPieceAt(2, 3, 416);
 		game.setPieceAt(2, 0, 52);
 		assertEquals("isMovePossible has a malfunction"+ game.isMovePossible() , false , game.isMovePossible()) ;
+	
+	}
+	
+	@Test
+	public void testEmptyisMovePossible() {
+	game.setPieceAt(0, 1, 0);
+	game.setPieceAt(0, 2, 0);
+	game.setPieceAt(0, 3, 0);
+	game.setPieceAt(0, 0, 0);
+	game.setPieceAt(1, 1, 0);
+	game.setPieceAt(1, 2, 0);
+	game.setPieceAt(1, 3, 0);
+	game.setPieceAt(1, 0, 0);
+	game.setPieceAt(3, 1, 0);
+	game.setPieceAt(3, 2, 0);
+	game.setPieceAt(3, 3, 0);
+	game.setPieceAt(3, 0, 0);
+	game.setPieceAt(2, 1, 0);
+	game.setPieceAt(2, 2, 0);
+	game.setPieceAt(2, 3, 0);
+	game.setPieceAt(2, 0, 0);
+	assertEquals("EmptyisMovePossible has a malfunction " ,game.isMovePossible() , true ) ;
+	assertEquals("EmptyisMovePossible has a malfunction " ,game.isMovePossible(MoveDirection.WEST) , true ) ;
+	assertEquals("EmptyisMovePossible has a malfunction " ,game.isMovePossible(MoveDirection.NORTH) , true ) ;
+	assertEquals("EmptyisMovePossible has a malfunction " ,game.isMovePossible(MoveDirection.SOUTH) , true ) ;
+	assertEquals("EmptyisMovePossible has a malfunction " ,game.isMovePossible(MoveDirection.EAST) , true ) ;
+	
 	}
 }
