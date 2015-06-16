@@ -323,7 +323,5 @@ public class SimpleTests {
 		game.setPieceAt(2, 3, 2);
 		game.setPieceAt(2, 0, 2);
 		assertTrue("FullisMovePossible has a malfunction", game.isMovePossible()) ;
-		game.setPieceAt(0, 0, 2048);
-		assertTrue("FullisMovePossible False has a malfunction ", false == game.isMovePossible()) ;
 	}
 }

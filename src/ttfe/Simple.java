@@ -18,6 +18,16 @@ public class Simple implements SimulatorInterface {
 			this.width = width ;
 			this.height = height ; 
 			this.r = r ;
+			int n = 0 ;
+			while (n > 0) {
+				if (this.r.nextInt(10) > 1 ){
+					array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
+				}
+				else
+					array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 4 ;
+				n++ ;
+			}
+			this.r.nextInt(2) ; 
 		    array = new int[width][height] ;
 	}
 	
