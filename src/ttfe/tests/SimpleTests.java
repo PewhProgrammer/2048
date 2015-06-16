@@ -137,12 +137,6 @@ public class SimpleTests {
 	}
 	
 	@Test
-	public void testGetPoints() {
-		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
-		assertTrue("The returned points are less than 0 ",game2.getPoints() >= 0);
-	}
-	
-	@Test
 	public void testGetPieceAt() {
 		int x = 92 ;
 		game.setPieceAt(1, 1, x);
@@ -221,7 +215,38 @@ public class SimpleTests {
 	@Test
 	//game.getPoints() game.getNumeMoves() and game.isSpaceleft() 
 	public void testIsSpaceLeft() {
-		assertEquals(" GetPoints Initial failed"+ game.getPoints(),game.getPoints() , 0 ) ;
+		game.setPieceAt(0, 1, 2);
+		game.setPieceAt(0, 2, 2);
+		game.setPieceAt(0, 3, 2);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 2);
+		game.setPieceAt(1, 2, 2);
+		game.setPieceAt(1, 3, 2);
+		game.setPieceAt(1, 0, 2);
+		game.setPieceAt(3, 1, 2);
+		game.setPieceAt(3, 2, 2);
+		game.setPieceAt(3, 3, 2);
+		game.setPieceAt(3, 0, 2);
+		game.setPieceAt(2, 1, 2);
+		game.setPieceAt(2, 2, 2);
+		game.setPieceAt(2, 3, 2);
+		assertEquals("isSpaceLeft has a malfunction ",true,game.isSpaceLeft()) ;
+		game.setPieceAt(2, 0, 2);
+		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
+		
+	}
+	
+	@Test
+	public void testGetNumMoves1(){
+		int y = game.getNumMoves() ;
+		game.performMove(MoveDirection.EAST);
+		assertTrue("getNumMoves has a malfunction",y+1 == game.getNumMoves()) ;
+	}
+	
+	@Test
+	public void testGetPoints() {
+		assertTrue("The returned points are less than 0 ",game.getPoints() >= 0);
+		assertTrue("The returned points are less than 0 ",game2.getPoints() >= 0);
 		game.setPieceAt(0, 1, 2);
 		game.setPieceAt(0, 2, 2);
 		game.setPieceAt(0, 3, 2);
@@ -238,43 +263,21 @@ public class SimpleTests {
 		game.setPieceAt(2, 2, 2);
 		game.setPieceAt(2, 3, 2);
 		game.setPieceAt(2, 0, 2);
-		int y = game.getNumMoves() ;
 		game.performMove(MoveDirection.EAST);
-		int x = game.getPoints() ;
-		assertTrue("getNumMoves has a malfunction",y+1 == game.getNumMoves()) ;
+		int x = game.getPoints();
 		assertEquals(" GetPoints1 has a malfunction" + x ,x,32);
-		game.setPieceAt(0, 1, 2);
-		game.setPieceAt(0, 2, 2);
-		game.setPieceAt(0, 3, 2);
-		game.setPieceAt(0, 0, 2);
-		game.setPieceAt(1, 1, 2);
-		game.setPieceAt(1, 2, 2);
-		game.setPieceAt(1, 3, 2);
-		game.setPieceAt(1, 0, 2);
-		assertEquals("isSpaceLeft has a malfunction ",false,game.isSpaceLeft()) ;
-		
 	}
 	
 	@Test
-	public void testisMovePossible() {
+	public void testIsMovePossible() {
 		assertEquals("isMovePossible has a malfunction " , true , game.isMovePossible() ) ; 
-		game.setPieceAt(0, 0, 2);
-		game.setPieceAt(0, 1, 4);
-		game.setPieceAt(0, 2, 2);
-		game.setPieceAt(0, 3, 4);
-		game.setPieceAt(1, 0, 4);
-		game.setPieceAt(1, 1, 2);
-		game.setPieceAt(1, 2, 4);
-		game.setPieceAt(1, 3, 2);
-		game.setPieceAt(3, 0, 2);
-		game.setPieceAt(3, 1, 4);
-		game.setPieceAt(3, 2, 2);
-		game.setPieceAt(3, 3, 4);
-		game.setPieceAt(2, 0, 4);
-		game.setPieceAt(2, 1, 2);
-		game.setPieceAt(2, 2, 4);
-		game.setPieceAt(2, 3, 2);
-		assertEquals("isMovePossible has a malfunction"+ game.isMovePossible() , false , game.isMovePossible()) ;
+		game.setPieceAt(0, 0, 2);game.setPieceAt(0, 1, 4);game.setPieceAt(0, 2, 2);game.setPieceAt(0, 3, 4);
+		game.setPieceAt(1, 0, 4);game.setPieceAt(1, 1, 2);game.setPieceAt(1, 2, 4);game.setPieceAt(1, 3, 2);
+		game.setPieceAt(2, 0, 2);game.setPieceAt(2, 1, 4);game.setPieceAt(2, 2, 2);game.setPieceAt(2, 3, 4);
+		game.setPieceAt(3, 0, 4);game.setPieceAt(3, 1, 2);game.setPieceAt(3, 2, 4);game.setPieceAt(3, 3, 2);
+		
+		System.out.println("hello") ;
+		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible() , false , game.isMovePossible()) ;
 	}
 	
 	@Test
@@ -304,7 +307,7 @@ public class SimpleTests {
 	}
 	
 	@Test
-	public void testFullisMovePossible() {
+	public void testFullIsMovePossible() {
 		game.setPieceAt(0, 1, 2);
 		game.setPieceAt(0, 2, 2);
 		game.setPieceAt(0, 3, 2);
@@ -321,7 +324,7 @@ public class SimpleTests {
 		game.setPieceAt(2, 2, 2);
 		game.setPieceAt(2, 3, 2);
 		game.setPieceAt(2, 0, 2);
-		assertTrue("FullisMovePossible has a malfunction", game.isMovePossible()) ;
+		assertTrue("FullisMovePossible has a malfunction" + game.isMovePossible(), game.isMovePossible()) ;
 	}
 	
 	@Test

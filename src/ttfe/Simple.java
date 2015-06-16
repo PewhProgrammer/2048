@@ -30,6 +30,7 @@ public class Simple implements SimulatorInterface {
 			}
 	}
 	
+	// Vertauscht height und width
 	
 	public void addPiece() {
 		this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
@@ -70,7 +71,7 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public void setPieceAt(int x , int y,int z){
-			array[x][y] = z ;
+			this.array[x][y] = z ;
 		}
 		
 		public boolean isMovePossible(){
@@ -80,10 +81,12 @@ public class Simple implements SimulatorInterface {
 			while (this.width > i) {
 				j = 0 ;
 				while (this.height > j ){
-				if ( this.array[i][j] != 0) counttile =1 ;
-				if ( this.array[i][j] == 0 )
-					if (counttile == 1)return true ;
-				j++;
+					if ( this.array[i][j] != 0) counttile =1 ;
+					if ( this.array[i][j] == 0 ) {
+						if (counttile == 1) return true ;
+					}
+					
+					j++;
 				}
 			
 				i++ ;
@@ -95,29 +98,26 @@ public class Simple implements SimulatorInterface {
 				j = 0 ;
 				while (this.height > j){
 					if (array[i][j] != 0 ){
-					if (i == 0 && j == 0){
-						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] )
-							return true ;
-					}
-					else if (i == 0){
-						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] || 
-						array[i][j] == array[i][j-1])
-							return true ;
-					}
-					else if (j == 0) {
-						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] ) 
+						if ( i == height-1 && j == width -1); 
+						else if (i == height-1){
+							if (array[i][j] == array[i][j+1] )
+								return true ;
+						} 
+						else if (j == width-1 ){
+							if ( array[i][j] == array[i+1][j] ) 
+								return true ;
+						}
+						else {
+							if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] ){
 									return true ;
-					}
-					else {
-						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j]  )
-									return true ;
-					}
+							}
+						} 
 					}
 					
 					j++ ;	
 				}
 				i++ ; 
-			}
+			}  
 			
 			return false ;
 		}
@@ -127,11 +127,27 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public boolean isSpaceLeft(){
-			return true;
+			
+			int i = 0 ;
+			int j = 0 ;
+			while (this.width > i) {
+				j = 0 ;
+				while (this.height > j ){
+					if (this.array[i][j] == 0)
+						return true ;
+				j++;
+				}
+			
+				i++ ;
+			}
+			return false ; 
 			}
 		
 		
-		public boolean performMove(MoveDirection direction){return true;}
+		public boolean performMove(MoveDirection direction){
+			this.moves++ ;
+			return true;
+			}
 		
 		public void run(PlayerInterface player, UserInterface ui){}
 		
