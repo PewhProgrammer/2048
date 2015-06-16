@@ -101,19 +101,21 @@ public class Simple implements SimulatorInterface {
 						if ( i == height-1 && j == width -1); 
 						else if (i == height-1){
 							if (array[i][j] == array[i][j+1] )
+								if (array[i][j] != 131072)
 								return true ;
 						} 
 						else if (j == width-1 ){
 							if ( array[i][j] == array[i+1][j] ) 
+								if (array[i][j] != 131072)
 								return true ;
 						}
 						else {
 							if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] ){
+									if (array[i][j] != 131072)
 									return true ;
 							}
 						} 
 					}
-					
 					j++ ;	
 				}
 				i++ ; 
@@ -146,6 +148,30 @@ public class Simple implements SimulatorInterface {
 		
 		public boolean performMove(MoveDirection direction){
 			this.moves++ ;
+			int i = 0 ;
+			int j = 0 ;
+			while (this.width > i){
+				while(this.height > j){
+					if (direction == MoveDirection.NORTH){
+						int hilfj = j ;
+						while(hilfj > 0){
+							if (array[i][hilfj] == array[i][hilfj-1]){
+								array[i][hilfj-1] += array[i][hilfj] ;
+								array[i][hilfj] = 0 ; 
+							}
+							else if (array[i][hilfj-1] == 0 ){
+								array[i][hilfj-1] = array[i][hilfj] ;
+								array[i][hilfj] = 0 ; 
+							}
+							else break ; 
+							hilfj-- ;
+						}
+					}
+					j++;
+				}
+				i++ ; 
+			}
+				
 			return true;
 			}
 		

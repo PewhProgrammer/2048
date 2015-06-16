@@ -277,7 +277,7 @@ public class SimpleTests {
 	@Test
 	public void testMaxPoints() {
 		int x = game.getPoints() ;
-		assertTrue("MaxPoints is overflowed " , 3932156 == x) ; 
+		assertTrue("MaxPoints is overflowed " , 3932156 >= x) ; 
 	}
 	
 	@Test
