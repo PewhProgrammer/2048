@@ -196,7 +196,7 @@ public class SimpleTests {
 		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.WEST));
 		boolean y = game.performMove(MoveDirection.WEST) ;
 		assertTrue("PerformMove3 " + y  ,true == y) ;
-		int f = game.getPieceAt(1,0) ;
+		f = game.getPieceAt(1,0) ;
 		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		 x = game.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
