@@ -341,21 +341,21 @@ public class SimpleTests {
 	
 	@Test
 	public void testGameOverMovePossible() {
-		game.setPieceAt(0, 1, 2048);
-		game.setPieceAt(0, 2, 2048);
-		game.setPieceAt(0, 3, 2048);
-		game.setPieceAt(0, 0, 2048);
-		game.setPieceAt(1, 1, 2048);
-		game.setPieceAt(1, 2, 2048);
-		game.setPieceAt(1, 3, 2048);
-		game.setPieceAt(1, 0, 2048);
-		game.setPieceAt(3, 1, 2048);
-		game.setPieceAt(3, 2, 2048);
-		game.setPieceAt(3, 3, 2048);
-		game.setPieceAt(3, 0, 2048);
-		game.setPieceAt(2, 1, 2048);
-		game.setPieceAt(2, 2, 2048);
-		game.setPieceAt(2, 3, 2048);
+		game.setPieceAt(0, 1, 131072);
+		game.setPieceAt(0, 2, 131072);
+		game.setPieceAt(0, 3, 131072);
+		game.setPieceAt(0, 0, 131072);
+		game.setPieceAt(1, 1, 131072);
+		game.setPieceAt(1, 2, 131072);
+		game.setPieceAt(1, 3, 131072);
+		game.setPieceAt(1, 0, 131072);
+		game.setPieceAt(3, 1, 131072);
+		game.setPieceAt(3, 2, 131072);
+		game.setPieceAt(3, 3, 131072);
+		game.setPieceAt(3, 0, 131072);
+		game.setPieceAt(2, 1, 131072);
+		game.setPieceAt(2, 2, 131072);
+		game.setPieceAt(2, 3, 131072);
 		game.setPieceAt(2, 0, 131072);
 		assertTrue("GameOverMovePossible has a malfunction " + game.isMovePossible() , game.isMovePossible() == false) ;
  	}
