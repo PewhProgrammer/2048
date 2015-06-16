@@ -289,7 +289,7 @@ public class SimpleTests {
 	game.setPieceAt(2, 2, 0);
 	game.setPieceAt(2, 3, 0);
 	game.setPieceAt(2, 0, 0);
-	assertEquals("EmptyisMovePossible has a malfunction 1 " + game.isMovePossible ,game.isMovePossible() , false ) ;
+	assertEquals("EmptyisMovePossible has a malfunction 1 " + game.isMovePossible() ,game.isMovePossible() , false ) ;
 	assertEquals("EmptyisMovePossible has a malfunction 2" ,game.isMovePossible(MoveDirection.WEST) , true ) ;
 	assertEquals("EmptyisMovePossible has a malfunction 3" ,game.isMovePossible(MoveDirection.NORTH) , true ) ;
 	assertEquals("EmptyisMovePossible has a malfunction 4" ,game.isMovePossible(MoveDirection.SOUTH) , true ) ;
