@@ -166,6 +166,23 @@ public class Simple implements SimulatorInterface {
 							else break ; 
 							hilfj-- ;
 						}
+						
+					}
+					
+					else if (direction == MoveDirection.SOUTH){
+						int hilfj = j ;
+						while(hilfj > 0){
+							if (array[i][hilfj] == array[i][hilfj+1]){
+								array[i][hilfj+1] += array[i][hilfj] ;
+								array[i][hilfj] = 0 ; 
+							}
+							else if (array[i][hilfj+1] == 0 ){
+								array[i][hilfj+1] = array[i][hilfj] ;
+								array[i][hilfj] = 0 ; 
+							}
+							else break ; 
+							hilfj-- ;
+						}
 					}
 					j++;
 				}

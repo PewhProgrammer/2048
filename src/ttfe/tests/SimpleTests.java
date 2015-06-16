@@ -359,4 +359,56 @@ public class SimpleTests {
 		game.setPieceAt(2, 0, 131072);
 		assertTrue("GameOverMovePossible has a malfunction " + game.isMovePossible() , game.isMovePossible() == false) ;
  	}
+	
+	@Test
+	public void testcorner1() {
+		
+		game.setPieceAt(0, 1, 0);
+		game.setPieceAt(0, 2, 0);
+		game.setPieceAt(0, 3, 0);
+		game.setPieceAt(0, 0, 2);
+		game.setPieceAt(1, 1, 0);
+		game.setPieceAt(1, 2, 0);
+		game.setPieceAt(1, 3, 0);
+		game.setPieceAt(1, 0, 0);
+		game.setPieceAt(3, 1, 0);
+		game.setPieceAt(3, 2, 0);
+		game.setPieceAt(3, 3, 0);
+		game.setPieceAt(3, 0, 0);
+		game.setPieceAt(2, 1, 0);
+		game.setPieceAt(2, 2, 0);
+		game.setPieceAt(2, 3, 0);
+		game.setPieceAt(2, 0, 0);
+		assertTrue("Initial MovePossible is wrong ", game.isMovePossible()) ;
+		assertTrue("SOUTH/EAST MOVEMENT IS WRONG" , (game.isMovePossible(MoveDirection.EAST) && 
+				game.isMovePossible(MoveDirection.SOUTH) )) ; 
+		assertTrue("NORTH/WEST MOVEMENT IS WRONG " , (false == game.isMovePossible(MoveDirection.WEST)) && (
+				false == game.isMovePossible(MoveDirection.NORTH) ) );
+		
+	}
+	
+	@Test
+	public void testcorner2(){
+		game.setPieceAt(0, 1, 0);
+		game.setPieceAt(0, 2, 0);
+		game.setPieceAt(0, 3, 0);
+		game.setPieceAt(0, 0, 0);
+		game.setPieceAt(1, 1, 0);
+		game.setPieceAt(1, 2, 0);
+		game.setPieceAt(1, 3, 0);
+		game.setPieceAt(1, 0, 0);
+		game.setPieceAt(3, 1, 0);
+		game.setPieceAt(3, 2, 0);
+		game.setPieceAt(3, 3, 2);
+		game.setPieceAt(3, 0, 0);
+		game.setPieceAt(2, 1, 0);
+		game.setPieceAt(2, 2, 0);
+		game.setPieceAt(2, 3, 0);
+		game.setPieceAt(2, 0, 0);
+		assertTrue("Initial MovePossible is wrong ", game.isMovePossible()) ;
+		assertTrue("NORTH/EAST MOVEMENT IS WRONG" , (game.isMovePossible(MoveDirection.WEST) && 
+				game.isMovePossible(MoveDirection.NORTH) )) ; 
+		assertTrue("EAST/SOUTH MOVEMENT IS WRONG " , (false == game.isMovePossible(MoveDirection.EAST)) && (
+				false == game.isMovePossible(MoveDirection.SOUTH) ) );
+	}
 }
