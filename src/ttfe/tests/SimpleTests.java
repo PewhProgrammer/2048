@@ -344,7 +344,7 @@ public class SimpleTests {
 		game.setPieceAt(2, 1, 2048);
 		game.setPieceAt(2, 2, 2048);
 		game.setPieceAt(2, 3, 2048);
-		game.setPieceAt(2, 0, 2048);
+		game.setPieceAt(2, 0, 131072);
 		assertTrue("GameOverMovePossible has a malfunction " + game.isMovePossible() , game.isMovePossible() == false) ;
  	}
 }
