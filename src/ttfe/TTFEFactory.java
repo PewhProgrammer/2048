@@ -28,11 +28,6 @@ public class TTFEFactory {
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
 		SimulatorInterface game = new Simple(width,height,r) ; 
- 		//SimulatorInterface.Simple game = new SimulatorInterface.Simple(width , height) ;
- 		//assertTrue("Falsch",  (game.getBoardHeight()) ==  ) ; 
-		//System.out.println("Yolo" ) ;
-		System.out.println("Numpieces " + game.getPieceAt(1,1)) ; 
-		//System.out.println(game.getNumMoves()) ; 
 		return game ; 
 	}
 

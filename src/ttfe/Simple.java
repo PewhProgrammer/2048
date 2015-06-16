@@ -17,23 +17,22 @@ public class Simple implements SimulatorInterface {
 		// TODO Auto-generated constructor stub
 			this.width = width ;
 			this.height = height ; 
+			this.array = new int[width][height] ;
 			this.r = r ;
 			int n = 0 ;
-			while (n > 0) {
+			while (2 > n) {
 				if (this.r.nextInt(10) > 1 ){
-					array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
+					this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
 				}
 				else
-					array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 4 ;
+					this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 4 ;
 				n++ ;
 			}
-			this.r.nextInt(2) ; 
-		    array = new int[width][height] ;
 	}
 	
 	
 	public void addPiece() {
-			this.array[1][1] = 2 ; 
+		this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
 		}
 		public int getBoardHeight() {
 			return this.width ;
@@ -63,11 +62,10 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public int getPieceAt(int x,int y) {
-			return this.array[1][1]; 
+			return this.array[x][y]; 
 		}
 		
 		public int getPoints(){
-			
 			return this.points ;
 		}
 		
@@ -76,8 +74,53 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public boolean isMovePossible(){
-			return true
-		;}
+			int i = 0 ;
+			int j = 0 ;
+			int counttile  = 0 ;
+			while (this.width > i) {
+				j = 0 ;
+				while (this.height > j ){
+				if ( this.array[i][j] != 0) counttile =1 ;
+				if ( this.array[i][j] == 0 )
+					if (counttile == 1)return true ;
+				j++;
+				}
+			
+				i++ ;
+			}
+			
+			j = 0 ;
+			i = 0 ;
+			while (this.width > i){
+				j = 0 ;
+				while (this.height > j){
+					if (array[i][j] != 0 ){
+					if (i == 0 && j == 0){
+						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] )
+							return true ;
+					}
+					else if (i == 0){
+						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] || 
+						array[i][j] == array[i][j-1])
+							return true ;
+					}
+					else if (j == 0) {
+						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] ) 
+									return true ;
+					}
+					else {
+						if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j]  )
+									return true ;
+					}
+					}
+					
+					j++ ;	
+				}
+				i++ ; 
+			}
+			
+			return false ;
+		}
 		
 		public boolean isMovePossible(MoveDirection direction){
 			return true;
