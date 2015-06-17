@@ -165,12 +165,13 @@ public class SimpleTests {
 		game.setPieceAt(2, 3, 0);
 		game.setPieceAt(2, 0, 0);
 		game.setPieceAt(0, 1, 2);
-		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.NORTH));
+		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.NORTH) ,true == game.isMovePossible(MoveDirection.NORTH));
 		assertTrue("PerformMove1",true == game.performMove(MoveDirection.NORTH));
 		int f = game.getPieceAt(0,1) ;
 		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
 		int x = game.getPieceAt(0,0) ; 
 		assertEquals("Equals is wrong " + x , x , 2) ;
+		System.out.println("Here : " + game.getPieceAt(0,0) + game.getPieceAt(0,1)) ; 
 		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.NORTH),false == game.isMovePossible(MoveDirection.NORTH));
 		assertTrue("PerformMove1",false == game.performMove(MoveDirection.NORTH));
 		game.setPieceAt(0,0,0);
@@ -187,7 +188,7 @@ public class SimpleTests {
 		game.setPieceAt(0, 3, 0);
 		
 		game.setPieceAt(1,0,2) ;
-		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.WEST));
+		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.WEST) ,true == game.isMovePossible(MoveDirection.WEST));
 		boolean y = game.performMove(MoveDirection.WEST) ;
 		assertTrue("PerformMove3 " + y  ,true == y) ;
 		f = game.getPieceAt(1,0) ;
@@ -199,7 +200,15 @@ public class SimpleTests {
 		game.setPieceAt(0, 0, 0);
 		//jo
 		game.setPieceAt(2,0,2) ;
-		assertTrue("IsMovePossible Direction " + game.isMovePossible() ,true == game.isMovePossible(MoveDirection.EAST));
+		
+		System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+				game.getPieceAt(0, 0) + game.getPieceAt(1, 0) + game.getPieceAt(2, 0) + game.getPieceAt(3, 0) +"\n"
+				+ game.getPieceAt(0, 1) + game.getPieceAt(1, 1) + game.getPieceAt(2, 1) + game.getPieceAt(3, 1)+"\n"
+				+ game.getPieceAt(0, 2) + game.getPieceAt(1, 2) + game.getPieceAt(2, 2) + game.getPieceAt(3, 2)+"\n"
+				+ game.getPieceAt(0, 3) + game.getPieceAt(1, 3) + game.getPieceAt(2, 3) + game.getPieceAt(3, 3) ) ;
+		
+		
+		assertTrue("IsMovePossible Direction " + game.isMovePossible(MoveDirection.EAST) ,true == game.isMovePossible(MoveDirection.EAST));
 		assertTrue("PerformMove4",true == game.performMove(MoveDirection.EAST)) ;
 		f = game.getPieceAt(0,1) ;
 		assertEquals("PerformMove does not delete his past tile " , f , 0) ; 
@@ -271,7 +280,7 @@ public class SimpleTests {
 		game.setPieceAt(2, 0, 2);
 		game.performMove(MoveDirection.EAST);
 		int x = game.getPoints();
-		assertEquals(" GetPoints1 has a malfunction" + x ,x,32);
+		assertEquals(" GetPoints1 has a malfunction" + x + game.getPoints() ,x,32);
 	}
 	
 	@Test
@@ -288,7 +297,6 @@ public class SimpleTests {
 		game.setPieceAt(2, 0, 2);game.setPieceAt(2, 1, 4);game.setPieceAt(2, 2, 2);game.setPieceAt(2, 3, 4);
 		game.setPieceAt(3, 0, 4);game.setPieceAt(3, 1, 2);game.setPieceAt(3, 2, 4);game.setPieceAt(3, 3, 2);
 		
-		System.out.println("hello") ;
 		assertEquals("isMovePossible has a malfunction "+ game.isMovePossible() , false , game.isMovePossible()) ;
 	}
 	
@@ -389,26 +397,33 @@ public class SimpleTests {
 	
 	@Test
 	public void testcorner2(){
-		game.setPieceAt(0, 1, 0);
-		game.setPieceAt(0, 2, 0);
-		game.setPieceAt(0, 3, 0);
-		game.setPieceAt(0, 0, 0);
-		game.setPieceAt(1, 1, 0);
-		game.setPieceAt(1, 2, 0);
-		game.setPieceAt(1, 3, 0);
-		game.setPieceAt(1, 0, 0);
-		game.setPieceAt(3, 1, 0);
-		game.setPieceAt(3, 2, 0);
-		game.setPieceAt(3, 3, 2);
-		game.setPieceAt(3, 0, 0);
-		game.setPieceAt(2, 1, 0);
-		game.setPieceAt(2, 2, 0);
-		game.setPieceAt(2, 3, 0);
-		game.setPieceAt(2, 0, 0);
+		game.setPieceAt(0, 0, 0);game.setPieceAt(1, 0, 0);game.setPieceAt(2, 0, 0);game.setPieceAt(3, 0, 0);
+		game.setPieceAt(0, 1, 0);game.setPieceAt(1, 1, 0);game.setPieceAt(2, 1, 0);game.setPieceAt(3, 1, 0);
+		game.setPieceAt(0, 2, 0);game.setPieceAt(1, 2, 0);game.setPieceAt(2, 2, 0);game.setPieceAt(3, 2, 0);
+		game.setPieceAt(0, 3, 0);game.setPieceAt(1, 3, 0);game.setPieceAt(2, 3, 0);game.setPieceAt(3, 3, 2);
+		
+	
 		assertTrue("Initial MovePossible is wrong ", game.isMovePossible()) ;
+		
 		assertTrue("NORTH/EAST MOVEMENT IS WRONG" , (game.isMovePossible(MoveDirection.WEST) && 
 				game.isMovePossible(MoveDirection.NORTH) )) ; 
-		assertTrue("EAST/SOUTH MOVEMENT IS WRONG " , (false == game.isMovePossible(MoveDirection.EAST)) && (
+		assertTrue("EAST/SOUTH MOVEMENT IS WRONG " 
+				+ game.isMovePossible(MoveDirection.EAST)+game.isMovePossible(MoveDirection.SOUTH) ,(false == game.isMovePossible(MoveDirection.EAST)) && (
 				false == game.isMovePossible(MoveDirection.SOUTH) ) );
+	}
+	
+	@Test
+	public void TEST() {
+		game.setPieceAt(0, 0, 4);game.setPieceAt(1, 0, 4);game.setPieceAt(2, 0, 4);game.setPieceAt(3, 0, 4);
+		game.setPieceAt(0, 1, 0);game.setPieceAt(1, 1, 0);game.setPieceAt(2, 1, 4);game.setPieceAt(3, 1, 0);
+		game.setPieceAt(0, 2, 2);game.setPieceAt(1, 2, 0);game.setPieceAt(2, 2, 4);game.setPieceAt(3, 2, 2);
+		game.setPieceAt(0, 3, 2);game.setPieceAt(1, 3, 4);game.setPieceAt(2, 3, 4);game.setPieceAt(3, 3, 2);
+		
+		game.performMove(MoveDirection.EAST) ;
+		System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+		game.getPieceAt(0, 0) + game.getPieceAt(1, 0) + game.getPieceAt(2, 0) + game.getPieceAt(3, 0) +"\n"
+		+ game.getPieceAt(0, 1) + game.getPieceAt(1, 1) + game.getPieceAt(2, 1) + game.getPieceAt(3, 1)+"\n"
+		+ game.getPieceAt(0, 2) + game.getPieceAt(1, 2) + game.getPieceAt(2, 2) + game.getPieceAt(3, 2)+"\n"
+		+ game.getPieceAt(0, 3) + game.getPieceAt(1, 3) + game.getPieceAt(2, 3) + game.getPieceAt(3, 3) ) ;
 	}
 }

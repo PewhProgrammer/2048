@@ -7,8 +7,6 @@ import ttfe.SimulatorInterface;
 import ttfe.UserInterface;
 import ttfe.Simple;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class TTFEFactory {
 	/**
@@ -27,7 +25,7 @@ public class TTFEFactory {
 	//troll
 	public static SimulatorInterface createSimulator(int width, int height,
 			Random r) {
-		SimulatorInterface game = new Simple(width,height,r) ; 
+		SimulatorInterface game = new Simple(width,height,r) ;
 		return game ; 
 	}
 
@@ -45,7 +43,11 @@ public class TTFEFactory {
 	public static UserInterface createUserInterface(SimulatorInterface game,
 			boolean gui) {
 		// TODO: Implement me.
-		return null;
+		
+		UserInterface ui = new Dog(game,gui) ;
+		
+		
+		return ui;
 	}
 
 	/**

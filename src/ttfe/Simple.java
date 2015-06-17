@@ -17,24 +17,45 @@ public class Simple implements SimulatorInterface {
 		// TODO Auto-generated constructor stub
 			this.width = width ;
 			this.height = height ; 
-			this.array = new int[width][height] ;
+			this.array = new int[this.width][this.height] ;
 			this.r = r ;
 			int n = 0 ;
-			while (2 > n) {
+			int m = 2 ;
+			while (m > n) {
+				int p = r.nextInt(this.width) ;
+				int q = r.nextInt(this.height) ;
+				if (array[p][q] == 0) {
 				if (this.r.nextInt(10) > 1 ){
-					this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
+					this.array[r.nextInt(this.width)][r.nextInt(this.height)] = 2 ;
 				}
 				else
-					this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 4 ;
+					this.array[r.nextInt(this.width)][r.nextInt(this.height)] = 4 ;
+				}
+				else m++ ;
 				n++ ;
 			}
 	}
 	
-	// Vertauscht height und width
 	
 	public void addPiece() {
-		this.array[r.nextInt(this.width-1)][r.nextInt(this.height-1)] = 2 ;
+		int p = 0 ;
+		int q = 0 ;
+		while ( true ){
+			p = r.nextInt(this.width) ;
+			q = r.nextInt(this.height) ;
+			if (this.array[p][q] == 0 ){
+				if (this.r.nextInt(10) >= 1 ){
+					this.array[p][q] = 2 ;
+					break;
+				}
+				else {
+					this.array[p][q] = 4 ;
+					break; 
+				}
+			}
 		}
+	
+	}
 		public int getBoardHeight() {
 			return this.width ;
 		}
@@ -78,14 +99,14 @@ public class Simple implements SimulatorInterface {
 			int i = 0 ;
 			int j = 0 ;
 			int counttile  = 0 ;
+			int counttilezero = 0;
 			while (this.width > i) {
 				j = 0 ;
 				while (this.height > j ){
 					if ( this.array[i][j] != 0) counttile =1 ;
-					if ( this.array[i][j] == 0 ) {
-						if (counttile == 1) return true ;
-					}
+					if ( this.array[i][j] == 0 ) counttilezero = 1 ;
 					
+					if (counttile == 1 && counttilezero == 1) return true ;
 					j++;
 				}
 			
@@ -97,21 +118,21 @@ public class Simple implements SimulatorInterface {
 			while (this.width > i){
 				j = 0 ;
 				while (this.height > j){
-					if (array[i][j] != 0 ){
-						if ( i == height-1 && j == width -1); 
-						else if (i == height-1){
-							if (array[i][j] == array[i][j+1] )
-								if (array[i][j] != 131072)
+					if (this.array[i][j] != 0 ){
+						if ( i == this.height-1 && j == this.width -1); 
+						else if (i == this.height-1){
+							if (this.array[i][j] == this.array[i][j+1] )
+								if (this.array[i][j] != 131072)
 								return true ;
 						} 
 						else if (j == width-1 ){
-							if ( array[i][j] == array[i+1][j] ) 
-								if (array[i][j] != 131072)
+							if ( this.array[i][j] == this.array[i+1][j] ) 
+								if (this.array[i][j] != 131072)
 								return true ;
 						}
 						else {
-							if (array[i][j] == array[i][j+1] || array[i][j] == array[i+1][j] ){
-									if (array[i][j] != 131072)
+							if (this.array[i][j] == this.array[i][j+1] || this.array[i][j] == this.array[i+1][j] ){
+									if (this.array[i][j] != 131072)
 									return true ;
 							}
 						} 
@@ -125,7 +146,73 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public boolean isMovePossible(MoveDirection direction){
-			return true;
+			int i = 0 ;
+			int j = 0;
+			int[][] copyarray = new int[this.width][this.height] ;
+			while (this.height > i){
+				j = 0 ;
+				while(this.width > j ){
+					copyarray[i][j] = array[i][j] ; 
+					j++;
+				}
+				i++ ; 
+			}
+			
+			i = 0 ;
+			j = 0 ; 
+			
+			if ( direction == MoveDirection.NORTH){
+				j = 1 ;
+				while (this.width > i){
+					j = 1 ;
+					while(this.height > j){
+						if (array[i][j] != 0) {
+						if (array[i][j-1] == 0) return true ;
+						}
+						j++;
+					}
+					i++;
+				}
+			}
+			else if ( direction == MoveDirection.SOUTH){
+				while (this.width > i){
+					j = 0 ;
+					while(this.height-1 > j){
+						if (array[i][j] != 0) {
+						if (array[i][j+1] == 0) return true ;
+						}
+						j++;
+					}
+					i++;
+				}
+			}
+			else if ( direction == MoveDirection.WEST){
+				i = 1 ;
+				while (this.width > i){
+					j = 0 ;
+					while(this.height > j){
+						if (array[i][j] != 0) {
+						if (array[i-1][j] == 0) return true ;
+						}
+						j++;
+					}
+					i++;
+				}
+			}
+			else if ( direction == MoveDirection.EAST){
+				while (this.width-1 > i){
+					j = 0 ;
+					while(this.height > j){
+						if (array[i][j] != 0) {
+						if (array[i+1][j] == 0) return true ; 
+						}
+						j++;
+					}
+					i++;
+				}
+			}
+				
+			return false;
 		}
 		
 		public boolean isSpaceLeft(){
@@ -147,50 +234,201 @@ public class Simple implements SimulatorInterface {
 		
 		
 		public boolean performMove(MoveDirection direction){
-			this.moves++ ;
 			int i = 0 ;
 			int j = 0 ;
-			while (this.width > i){
-				while(this.height > j){
-					if (direction == MoveDirection.NORTH){
-						int hilfj = j ;
-						while(hilfj > 0){
-							if (array[i][hilfj] == array[i][hilfj-1]){
-								array[i][hilfj-1] += array[i][hilfj] ;
-								array[i][hilfj] = 0 ; 
-							}
-							else if (array[i][hilfj-1] == 0 ){
-								array[i][hilfj-1] = array[i][hilfj] ;
-								array[i][hilfj] = 0 ; 
-							}
-							else break ; 
-							hilfj-- ;
-						}
-						
-					}
-					
-					else if (direction == MoveDirection.SOUTH){
-						int hilfj = j ;
-						while(hilfj > 0){
-							if (array[i][hilfj] == array[i][hilfj+1]){
-								array[i][hilfj+1] += array[i][hilfj] ;
-								array[i][hilfj] = 0 ; 
-							}
-							else if (array[i][hilfj+1] == 0 ){
-								array[i][hilfj+1] = array[i][hilfj] ;
-								array[i][hilfj] = 0 ; 
-							}
-							else break ; 
-							hilfj-- ;
-						}
-					}
+			int[][] copyarray = new int[this.width][this.height] ;
+			while (this.height > i){
+				j = 0 ;
+				while(this.width > j ){
+					copyarray[i][j] = array[i][j] ; 
 					j++;
 				}
 				i++ ; 
 			}
-				
-			return true;
+			
+			i = 0 ;
+			j = 0 ;
+		
+			
+			if (direction == MoveDirection.NORTH) {
+				while (this.width > i ){
+					j = 1 ;
+					while (this.height > j) {
+						if (array[i][j-1] == array[i][j]) {   //mergeable 2 tiles
+							array[i][j-1] += array[i][j] ;		//überschreiben
+							this.points = array[i][j-1]+this.points ; 		//score
+							array[i][j-1] = array[i][j-1] * (-1) ;
+							array[i][j] = 0 ;					//reset auf 0
+						}
+						else if(array[i][j-1] == 0){
+							int hilfj = j ;
+							while (hilfj > 0){
+								if (array[i][hilfj-1] == 0 ){
+								array[i][hilfj-1] = array[i][hilfj] ;
+								array[i][hilfj] = 0 ;
+								}
+								else if (array[i][hilfj-1] == array[i][hilfj]){
+									array[i][hilfj-1] += array[i][hilfj] ;		//überschreiben
+									this.points = array[i][hilfj-1] +this.points ; 		//score
+									array[i][hilfj] = 0 ;					//reset auf 0
+									array[i][j-1] = array[i][j-1] * (-1) ;
+									break;
+								}
+									
+								else break ;
+								hilfj-- ;
+							}
+						}
+						j++ ;
+					}
+					i++;
+				}
 			}
+			
+			else if (direction == MoveDirection.SOUTH) {
+				i = 0 ;
+				j = 0 ;
+				while (this.width > i ){
+					j = 2 ;
+					while (j >= 0) {
+						if (array[i][j] == 0) ;			// Muss nich zero tiles überprüfen
+						else {
+						if (array[i][j+1] == array[i][j]) {   //mergeable 2 tiles
+							array[i][j+1] += array[i][j] ;		//überschreiben
+							this.points = array[i][j+1] +this.points ; 		//score
+							array[i][j] = 0 ;					//reset auf 0
+							array[i][j+1] = array[i][j+1] * (-1) ;
+						}
+						else if(array[i][j+1] == 0){
+							int hilfj = j ;
+							while (2 >= hilfj){
+								if (array[i][hilfj+1] == 0 ){
+								array[i][hilfj+1] = array[i][hilfj] ;
+								array[i][hilfj] = 0 ;
+								}
+								else if (array[i][hilfj+1] == array[i][hilfj]){
+									array[i][hilfj+1] += array[i][hilfj] ;		//überschreiben
+									this.points = array[i][hilfj+1] + this.points ; 		//score
+									array[i][hilfj] = 0 ;						//reset auf 0 
+									array[i][hilfj+1] = array[i][hilfj+1] * (-1) ;
+									break;
+								}
+									
+								else break ;
+								hilfj++ ;
+							}
+						}
+						}
+						j-- ;
+					}
+					i++;
+				}
+			}
+			
+			else if (direction == MoveDirection.WEST) {
+				i = 1 ;
+				while (this.width > i ){
+					j = 0 ;
+					while (this.height > j) {
+						if (array[i-1][j] == array[i][j]) {   //mergeable 2 tiles
+							array[i-1][j] += array[i][j] ;		//überschreiben
+							this.points = array[i-1][j]+this.points ; 		//score
+							array[i][j] = 0 ;					//reset auf 0
+							array[i-1][j] = array[i-1][j] *(-1) ;
+						}
+						else if(array[i-1][j] == 0){
+							int hilfi = i ;
+							while (hilfi > 0){
+								if (array[hilfi-1][j] == 0 ){
+								array[hilfi-1][j] = array[hilfi][j] ;
+								array[hilfi][j] = 0 ;
+								}
+								else if (array[hilfi-1][j] == array[i][j]){
+									array[hilfi-1][j] += array[hilfi][j] ;		//überschreiben
+									this.points = array[hilfi-1][j]+this.points ; 		//score
+									array[hilfi][j] = 0 ;						//reset auf 0
+									array[hilfi-1][j] = array[hilfi-1][j] *(-1) ; 
+									break;
+								}
+									
+								else break ;
+								hilfi-- ;
+							}
+						}
+						j++ ;
+					}
+					i++;
+				}
+			}
+			
+			else if (direction == MoveDirection.EAST) {
+				i = 2 ;
+				while (i >= 0 ){
+					j = 0 ;
+					while (this.height > j) {
+						if (array[i+1][j] == array[i][j]) {   //mergeable 2 tiles
+							array[i+1][j] += array[i][j] ;		//überschreiben
+							this.points = array[i+1][j]+this.points ; 		//score
+							array[i][j] = 0 ;					//reset auf 0
+							array[i+1][j] = array[i+1][j] *(-1) ; 
+						}
+						else if(array[i+1][j] == 0){
+							int hilfi = i ;
+							while (2 >= hilfi){
+								if (array[hilfi+1][j] == 0 ){
+								array[hilfi+1][j] = array[i][j] ;
+								array[hilfi][j] = 0 ;
+								}
+								else if (array[hilfi+1][j] == array[hilfi][j]){
+									array[hilfi+1][j] += array[hilfi][j] ;		//überschreiben
+									this.points = array[hilfi+1][j]+this.points ; 		//score
+									array[hilfi][j] = 0 ;						//reset auf 0
+									array[hilfi+1][j] = array[hilfi+1][j] *(-1) ; 
+									break;
+								}
+									
+								else break ;
+								hilfi++ ;
+							}
+						}
+						j++ ;
+					}
+					i--;
+				}
+			}
+			
+			i = 0 ;
+			j = 0;
+			
+			while(this.width > i){
+				j = 0 ;
+				while(this.height > j ){
+					if (this.array[i][j] < 0) this.array[i][j] = this.array[i][j]  *(-1) ; 
+					j++ ;
+				}
+				i++;
+			}
+			
+			i=0;
+			j=0;
+			while (this.width > i){
+
+				j = 0 ; 
+				while (this.height > j){
+		 
+					if (this.array[i][j] != copyarray[i][j]) {
+						this.moves++ ; 
+						return true ; 
+					}
+					j++ ;
+				}
+				i++ ;
+			}
+				
+			return false;
+			}
+		
+		
 		
 		public void run(PlayerInterface player, UserInterface ui){}
 		
