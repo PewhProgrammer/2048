@@ -13,16 +13,17 @@ public class Dog implements UserInterface{
 	String usermove ;
 
 	public Dog(SimulatorInterface game , boolean gui){
+		if ( gui == false ) ;
 		
 	}
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
 		// TODO Auto-generated method stub
 		possibleAnswers = new String[4] ;
-		possibleAnswers[1] = "right" ;
-		possibleAnswers[2] = "left";
-		possibleAnswers[3] = "up";
-		possibleAnswers[4] = "down";
+		possibleAnswers[1] = "r" ;
+		possibleAnswers[2] = "l";
+		possibleAnswers[3] = "u";
+		possibleAnswers[4] = "d";
 		int i = 0 ; 
 		
 		

@@ -9,6 +9,7 @@ import ttfe.Simple;
 
 
 public class TTFEFactory {
+	
 	/**
 	 * Create a 2048 simulator.
 	 * 
@@ -44,7 +45,12 @@ public class TTFEFactory {
 			boolean gui) {
 		// TODO: Implement me.
 		
-		UserInterface ui = new Dog(game,gui) ;
+		UserInterface ui ;
+		if (gui == false) {
+			ui = new Dog(game,gui) ;
+		}
+		else 
+			ui = new GUI(game) ;
 		
 		
 		return ui;
@@ -62,7 +68,13 @@ public class TTFEFactory {
 	 */
 	public static PlayerInterface createPlayer(boolean human) {
 		// TODO: Implement me.
-		return null;
+		PlayerInterface player ;
+		if (human == true) 
+			player = new Cat() ;
+		else
+			player = new AI() ;
+		
+		return player ;
 	}
 
 }

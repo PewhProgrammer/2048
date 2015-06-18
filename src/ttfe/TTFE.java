@@ -14,7 +14,9 @@ public class TTFE {
 	 * If set to true a human will be playing the game, otherwise a computer player.
 	 * However, command line arguments will override this choice.
 	 */
-	private static final boolean DEFAULT_USE_HUMAN = false;
+	
+	//////////////////////////////  MUSS ICH NOCH UMÄNDERN ////////////////////
+	private static final boolean DEFAULT_USE_HUMAN = true;
 
 	/**
 	 * If set to true the user will be asked what player should be chosen.
@@ -129,6 +131,8 @@ public class TTFE {
 		// Create an instance of the user interface that is used to communicate
 		// with the user.
 		UserInterface ui = TTFEFactory.createUserInterface(game, useGUI);
+		
+		ui.updateScreen(game);
 
 		// If requested, the user is asked what player should be used.
 		if (DEBUG_ASK_USER) {

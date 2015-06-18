@@ -1,6 +1,7 @@
 package ttfe;
 
 import java.util.Random;
+
 import ttfe.SimulatorInterface;
 
 public class Simple implements SimulatorInterface {
@@ -289,10 +290,11 @@ public class Simple implements SimulatorInterface {
 				i = 0 ;
 				j = 0 ;
 				while (this.width > i ){
-					j = 2 ;
+					j = this.height - 2 ;
 					while (j >= 0) {
 						if (array[i][j] == 0) ;			// Muss nich zero tiles überprüfen
 						else {
+							System.out.println("here : " + i+j);
 						if (array[i][j+1] == array[i][j]) {   //mergeable 2 tiles
 							array[i][j+1] += array[i][j] ;		//überschreiben
 							this.points = array[i][j+1] +this.points ; 		//score
@@ -301,7 +303,7 @@ public class Simple implements SimulatorInterface {
 						}
 						else if(array[i][j+1] == 0){
 							int hilfj = j ;
-							while (2 >= hilfj){
+							while (this.height-2 >= hilfj){
 								if (array[i][hilfj+1] == 0 ){
 								array[i][hilfj+1] = array[i][hilfj] ;
 								array[i][hilfj] = 0 ;
@@ -343,7 +345,7 @@ public class Simple implements SimulatorInterface {
 								array[hilfi-1][j] = array[hilfi][j] ;
 								array[hilfi][j] = 0 ;
 								}
-								else if (array[hilfi-1][j] == array[i][j]){
+								else if (array[hilfi-1][j] == array[hilfi][j]){
 									array[hilfi-1][j] += array[hilfi][j] ;		//überschreiben
 									this.points = array[hilfi-1][j]+this.points ; 		//score
 									array[hilfi][j] = 0 ;						//reset auf 0
@@ -362,21 +364,21 @@ public class Simple implements SimulatorInterface {
 			}
 			
 			else if (direction == MoveDirection.EAST) {
-				i = 2 ;
+				i = this.width - 2 ;
 				while (i >= 0 ){
 					j = 0 ;
 					while (this.height > j) {
-						if (array[i+1][j] == array[i][j]) {   //mergeable 2 tiles
-							array[i+1][j] += array[i][j] ;		//überschreiben
+						if (array[i+1][j] == array[i][j]) {   				//mergeable 2 tiles
+							array[i+1][j] += array[i][j] ;					//überschreiben
 							this.points = array[i+1][j]+this.points ; 		//score
-							array[i][j] = 0 ;					//reset auf 0
+							array[i][j] = 0 ;								//reset auf 0
 							array[i+1][j] = array[i+1][j] *(-1) ; 
 						}
 						else if(array[i+1][j] == 0){
 							int hilfi = i ;
-							while (2 >= hilfi){
+							while ((this.width-2) >= hilfi){
 								if (array[hilfi+1][j] == 0 ){
-								array[hilfi+1][j] = array[i][j] ;
+								array[hilfi+1][j] = array[hilfi][j] ;
 								array[hilfi][j] = 0 ;
 								}
 								else if (array[hilfi+1][j] == array[hilfi][j]){
@@ -430,6 +432,15 @@ public class Simple implements SimulatorInterface {
 		
 		
 		
-		public void run(PlayerInterface player, UserInterface ui){}
+		public void run(PlayerInterface player, UserInterface ui){
 		
+			ui.updateScreen(this);
+			while(this.isMovePossible()) {
+				this.performMove( ( player.getPlayerMove(this,ui)) ) ;
+				this.addPiece() ; 
+				ui.updateScreen(this);
+			}
+			//ui.showGameOver()
+			
+		}
 	}
