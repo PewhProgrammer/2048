@@ -25,11 +25,6 @@ public class AI implements PlayerInterface {
 		this.max = 0 ; 
 		int n = 0 ;
 		int hilfn = 0 ;
-		
-		while(10 > n){
-			game2[n] = new Simple(HEIGHT,WIDTH,R);
-			n++;
-		}
 		n=0;
 		
 //		
@@ -94,60 +89,58 @@ public class AI implements PlayerInterface {
 //			n++ ; 
 //		}
 		
-		i = 0 ;
-		System.out.println(true); 
-		while ( 400 > i ){
-			int max = 0 ;
-			int q = R.nextInt(3);
-			int n2 = 0 ;
-			while (10 > n2 ) {
-				r.setSeed(r.nextInt());
-				i = 0 ;
-				j = 0 ; 
-				while (HEIGHT > i){
-					j = 0 ;
-					while(WIDTH > j){
-						game2[n2].setPieceAt(i, j, game.getPieceAt(i,j) );
-						j++;
-					}
-					i++;
-				}
-				n2++;
-			}
-			while(10 > n ) {
-				if (q == 0){
-					game2[n].performMove(MoveDirection.WEST);
-					chain2[n] = MoveDirection.WEST ;
-				}
-				else if (q == 1){
-					game2[n].performMove(MoveDirection.SOUTH);
-					chain2[n] = MoveDirection.SOUTH ;
-				}
-				else if (q == 2){
-					game2[n].performMove(MoveDirection.EAST);
-					chain2[n] = MoveDirection.EAST ;
-				}
-				else{
-					game2[n].performMove(MoveDirection.NORTH);
-					chain2[n] = MoveDirection.NORTH ;
-				}
-				if ( game2[n].getPoints() > max){
-					max = game2[n].getPoints();
-					hilfn = n ;
-				}
-				n++ ; 
+			n = 0 ;
+			while (2 > n) {
+			game2[n] = new Simple(HEIGHT,WIDTH,R) ;
+			R.setSeed(4711);
+			n++ ;
 			}
 			
-			game.performMove(chain2[hilfn]) ;
-			if (game.isSpaceLeft())
+			
+//			i = 0 ;
+//			while(game2[0].isMovePossible(MoveDirection.WEST ) || game2[0].isSpaceLeft()){
+//				
+//				game2[0].performMove(MoveDirection.WEST) ;
+//				chain2[i] = MoveDirection.WEST ;
+//				if (game2[0].isSpaceLeft())
+					game2[0].addPiece(); 
+//				i++;
+//			
+//			}
+			
+			System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+					game2[0].getPieceAt(0, 0) + game2[0].getPieceAt(1, 0) + game2[0].getPieceAt(2, 0) + game2[0].getPieceAt(3, 0) +"\n"
+					+ game2[0].getPieceAt(0, 1) + game2[0].getPieceAt(1, 1) + game2[0].getPieceAt(2, 1) + game2[0].getPieceAt(3, 1)+"\n"
+					+ game2[0].getPieceAt(0, 2) + game2[0].getPieceAt(1, 2) + game2[0].getPieceAt(2, 2) + game2[0].getPieceAt(3, 2)+"\n"
+					+ game2[0].getPieceAt(0, 3) + game2[0].getPieceAt(1, 3) + game2[0].getPieceAt(2, 3) + game2[0].getPieceAt(3, 3) ) ;
+			
+			
+			game2[1].addPiece(); 
+//			i++;
+//		
+//		}
+		
+		System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+				game2[1].getPieceAt(0, 0) + game2[1].getPieceAt(1, 0) + game2[1].getPieceAt(2, 0) + game2[1].getPieceAt(3, 0) +"\n"
+				+ game2[1].getPieceAt(0, 1) + game2[1].getPieceAt(1, 1) + game2[1].getPieceAt(2, 1) + game2[1].getPieceAt(3, 1)+"\n"
+				+ game2[1].getPieceAt(0, 2) + game2[1].getPieceAt(1, 2) + game2[1].getPieceAt(2, 2) + game2[1].getPieceAt(3, 2)+"\n"
+				+ game2[1].getPieceAt(0, 3) + game2[1].getPieceAt(1, 3) + game2[1].getPieceAt(2, 3) + game2[1].getPieceAt(3, 3) ) ;
+		
+			i = 0 ; 
 			game.addPiece();
-			i++;
-			ui.updateScreen(game);
-		}
+			while(chain[i] != null){
+//				game.performMove(chain2[i]);
+//				if (game.isSpaceLeft())
+//				game.addPiece();
+//				i++;
+				ui.updateScreen(game);
+			}
 		
 //		if ( r.nextInt(2) > 0) return MoveDirection.WEST ;
 //		else return MoveDirection.SOUTH;
-		return null ; 
 		
+		while(true){}
 	}
 }
+	
+

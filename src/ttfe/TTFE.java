@@ -8,7 +8,7 @@ public class TTFE {
 	 * If set to true the GUI will be used as user interface, otherwise the console.
 	 * However, command line arguments will override this choice.
 	 */
-	private static final boolean DEFAULT_USE_GUI = false;
+	private static final boolean DEFAULT_USE_GUI = true;
 
 	/**
 	 * If set to true a human will be playing the game, otherwise a computer player.
@@ -16,7 +16,7 @@ public class TTFE {
 	 */
 	
 	//////////////////////////////  MUSS ICH NOCH UMÄNDERN ////////////////////
-	private static final boolean DEFAULT_USE_HUMAN = true;
+	private static final boolean DEFAULT_USE_HUMAN = false;
 
 	/**
 	 * If set to true the user will be asked what player should be chosen.
