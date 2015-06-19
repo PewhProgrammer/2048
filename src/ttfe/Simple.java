@@ -241,11 +241,14 @@ public class Simple implements SimulatorInterface {
 		public boolean performMove(MoveDirection direction){
 			int i = 0 ;
 			int j = 0 ;
+			//HEIGHT = 4 ;
+			//WIDTH = 5 ; 
 			int[][] copyarray = new int[this.width][this.height] ;
-			while (this.height > i){
+			while (this.width > i){
 				j = 0 ;
-				while(this.width > j ){
+				while(this.height > j ){
 					copyarray[i][j] = array[i][j] ; 
+					System.out.println("hey") ;
 					j++;
 				}
 				i++ ; 
@@ -437,7 +440,7 @@ public class Simple implements SimulatorInterface {
 		
 		public void run(PlayerInterface player, UserInterface ui){
 		
-			while(this.isMovePossible(MoveDirection.WEST)) {
+			while(this.isMovePossible()) {
 				this.performMove( ( player.getPlayerMove(this,ui)) ) ;
 				ui.updateScreen(this);
 				if(this.isSpaceLeft())

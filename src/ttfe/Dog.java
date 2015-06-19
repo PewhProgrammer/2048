@@ -124,32 +124,32 @@ public class Dog implements UserInterface{
 		System.out.print("\n") ;
 		int i = 0 ;
 		int j = 0 ;
-		while (WIDTH > i){
+		while (HEIGHT > i){
 			j = 0 ;
-			while(HEIGHT > j){
+			while(WIDTH > j){
 				System.out.print("|-------------");
 				j++ ;
 			}
 			System.out.print("|\n") ;
 			j = 0 ;
-			while(HEIGHT > j){
-				if (game.getPieceAt(j, i) == 0 ) 
+			while(WIDTH > j){
+				if (game.getPieceAt(i, j) == 0 ) 
 					System.out.print("|             ");
-				else if (game.getPieceAt(j,i) > 1000)
-					System.out.print("|    "+game.getPieceAt(j, i)+"     ");
+				else if (game.getPieceAt(i,j) > 1000)
+					System.out.print("|    "+game.getPieceAt(i, j)+"     ");
 				else if(game.getPieceAt(i, j) > 100 )
-					System.out.print("|    "+game.getPieceAt(j, i)+"      ");
+					System.out.print("|    "+game.getPieceAt(i, j)+"      ");
 				else if (game.getPieceAt(i,j) > 10 )
-					System.out.print("|     "+game.getPieceAt(j, i)+"      ");
+					System.out.print("|     "+game.getPieceAt(i, j)+"      ");
 				else
-					System.out.print("|     "+game.getPieceAt(j, i)+"       ");
+					System.out.print("|     "+game.getPieceAt(i, j)+"       ");
 				j++ ;
 			}
 			System.out.print("|\n") ;
 			i++ ;
 		}
 		j = 0 ;
-		while(HEIGHT > j){
+		while(WIDTH > j){
 			System.out.print("|-------------");
 			j++ ;
 		}

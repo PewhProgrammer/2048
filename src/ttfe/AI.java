@@ -91,7 +91,8 @@ public class AI implements PlayerInterface {
 //		n++ ;
 //		}
 		
-		n = 0 ; 
+		
+		n = 0 ;  
 		while (1 > n){
 			game2[n] = new Simple(HEIGHT,WIDTH,R);
 			while(game2[n].isMovePossible(MoveDirection.WEST)){
@@ -104,6 +105,7 @@ public class AI implements PlayerInterface {
 		}
 		
 		i = 0 ;
+		System.out.println(game2[0].getNumMoves());
 		while (game2[0].getNumMoves() > i){
 			//if (chain[hilfn][i] != null )
 			game.performMove(chain[0][0]);
