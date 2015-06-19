@@ -8,7 +8,7 @@ public class TTFE {
 	 * If set to true the GUI will be used as user interface, otherwise the console.
 	 * However, command line arguments will override this choice.
 	 */
-	private static final boolean DEFAULT_USE_GUI = true;
+	private static final boolean DEFAULT_USE_GUI = false;
 
 	/**
 	 * If set to true a human will be playing the game, otherwise a computer player.
@@ -16,7 +16,7 @@ public class TTFE {
 	 */
 	
 	//////////////////////////////  MUSS ICH NOCH UMÄNDERN ////////////////////
-	private static final boolean DEFAULT_USE_HUMAN = false;
+	private static final boolean DEFAULT_USE_HUMAN = true;
 
 	/**
 	 * If set to true the user will be asked what player should be chosen.
@@ -29,7 +29,7 @@ public class TTFE {
 	/**
 	 * The default width of the board.
 	 */
-	private static final int DEFAULT_WIDTH = 5;
+	private static final int DEFAULT_WIDTH = 4;
 
 	/**
 	 * The default height of the board.

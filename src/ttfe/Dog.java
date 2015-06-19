@@ -2,14 +2,7 @@ package ttfe;
 
 import ttfe.MoveDirection; 
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import ttfe.GUI;
-
 import java.util.Scanner;
-
-import javax.swing.JOptionPane;
 
 public class Dog implements UserInterface{
 
@@ -22,46 +15,7 @@ public class Dog implements UserInterface{
 		
 	}
 	
-	private final class SynchronizedKeyListener implements KeyListener {
-		private final Dog G;
 
-		public SynchronizedKeyListener(Dog G) {
-			this.G = G;
-		}
-
-		@Override
-		public void keyTyped(KeyEvent e) {
-			/* Do nothing */
-		}
-
-		@Override
-		public void keyReleased(KeyEvent e) {
-			/* Do nothing */
-		}
-
-		@Override
-		public void keyPressed(KeyEvent e) {
-			synchronized (G) {
-				switch (e.getKeyCode()) {
-				case KeyEvent.VK_LEFT:
-					UserMoveChoice = MoveDirection.WEST;
-					break;
-				case KeyEvent.VK_RIGHT:
-					UserMoveChoice = MoveDirection.EAST;
-					break;
-				case KeyEvent.VK_UP:
-					UserMoveChoice = MoveDirection.NORTH;
-					break;
-				case KeyEvent.VK_DOWN:
-					UserMoveChoice = MoveDirection.SOUTH;
-					break;
-				default:
-					return;
-				}
-				G.notify();
-			}
-		}
-	}
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
 		// TODO Auto-generated method stub	
@@ -73,7 +27,7 @@ public class Dog implements UserInterface{
 				String input = Answer.next();
 				if (input.length() == 1){
 					i = 0;
-					while (4 > i) {
+					while (possibleAnswers[i] != null) {
 						if ( possibleAnswers[i].charAt(0) == input.charAt(0) )
 							return input ; 
 						i++ ;
