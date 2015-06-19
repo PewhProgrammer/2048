@@ -9,6 +9,8 @@ import ttfe.GUI;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Dog implements UserInterface{
 
 	
@@ -62,23 +64,30 @@ public class Dog implements UserInterface{
 	}
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
-		// TODO Auto-generated method stub		
-		
-			System.out.print(question) ; 
-			Answer = new Scanner(System.in);
-			String input = Answer.next() ;
+		// TODO Auto-generated method stub	
+		int i = 0 ;
 			
-			return input ; 
+			while (true) {
+				System.out.print(question) ; 
+				Answer = new Scanner(System.in);
+				String input = Answer.next();
+				if (input.length() == 1){
+					i = 0;
+					while (4 > i) {
+						if ( possibleAnswers[i].charAt(0) == input.charAt(0) )
+							return input ; 
+						i++ ;
+					}
+				}
 			}
+	}
 
-		
-//	}
+
 
 	@Override
 	public MoveDirection getUserMove() {
 		// TODO Auto-generated method stub
 		//KeyListener Key = new SynchronizedKeyListener(this) ;
-		while(true) {
 		String question = "Direction ? " ;
 		String[] possibleAnswers = new String[4]; 
 		
@@ -88,14 +97,14 @@ public class Dog implements UserInterface{
 		possibleAnswers[3] = "d";
 		String direction = "Hallo";
 		
-		while(direction.length() != 1 ) 
 		direction = this.getUserInput (question,possibleAnswers) ;
 		
 		if (direction.charAt(0) == 'r' ) return MoveDirection.EAST ;
 		else if (direction.charAt(0) == 'l') return MoveDirection.WEST ;
 		else if (direction.charAt(0) == 'u') return MoveDirection.NORTH ;
 		else if (direction.charAt(0) == 'd') return MoveDirection.SOUTH ;
-		}
+		
+		return null ; 
 	}
 	
 

@@ -105,15 +105,18 @@ public class AI implements PlayerInterface {
 		}
 		
 		i = 0 ;
-		System.out.println(game2[0].getNumMoves());
-		while (game2[0].getNumMoves() > i){
+		System.out.println(game.isMovePossible()); 
+		while ( game.isMovePossible() ){
 			//if (chain[hilfn][i] != null )
 			game.performMove(chain[0][0]);
 			if (game.isSpaceLeft())
 			game.addPiece();
+			if(game.isMovePossible(chain[0][0]))
+				game.performMove(MoveDirection.SOUTH);
+			else
+				game.performMove(MoveDirection.SOUTH);
 			i++;
 		}
-		System.out.println("Here"+game.isMovePossible());
 		ui.updateScreen(game);
 		
 		return null; 

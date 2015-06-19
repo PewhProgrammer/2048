@@ -150,9 +150,9 @@ public class Simple implements SimulatorInterface {
 			int i = 0 ;
 			int j = 0;
 			int[][] copyarray = new int[this.width][this.height] ;
-			while (this.height > i){
+			while (this.width > i){
 				j = 0 ;
-				while(this.width > j ){
+				while(this.height > j ){
 					copyarray[i][j] = array[i][j] ; 
 					j++;
 				}
