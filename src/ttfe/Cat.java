@@ -20,7 +20,8 @@ public class Cat implements PlayerInterface {
 		possibleAnswers[3] = "d";
 		
 		direction = "hallo" ; 
-		while(direction.charAt(0) != 'r' &&
+		while(direction.length() != 1 &&
+			  direction.charAt(0) != 'r' &&
 			  direction.charAt(0) != 'l' &&
 			  direction.charAt(0) != 'u' &&
 			  direction.charAt(0) != 'd')
