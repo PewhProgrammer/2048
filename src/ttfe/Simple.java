@@ -58,10 +58,10 @@ public class Simple implements SimulatorInterface {
 	
 	}
 		public int getBoardHeight() {
-			return this.width ;
+			return this.height ;
 		}
 		public int getBoardWidth() {
-			return this.height ;
+			return this.width ;
 		}
 		public int getNumMoves() {
 			return this.moves ;
@@ -85,6 +85,7 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public int getPieceAt(int x,int y) {
+			//System.out.println("hallo"+x+y) ; 
 			return this.array[x][y]; 
 		}
 		
@@ -248,7 +249,6 @@ public class Simple implements SimulatorInterface {
 				j = 0 ;
 				while(this.height > j ){
 					copyarray[i][j] = array[i][j] ; 
-					System.out.println("hey") ;
 					j++;
 				}
 				i++ ; 

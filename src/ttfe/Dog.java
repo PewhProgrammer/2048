@@ -101,7 +101,7 @@ public class Dog implements UserInterface{
 		// TODO Auto-generated method stub
 		System.out.println("=================================================") ;
 		System.out.println("=-                                             -=") ;
-		System.out.println("=-                 Game Over                   -=") ;
+		System.out.println("=-                 GAME OVER                   -=") ;
 		System.out.println("=-       Moves: "+game.getNumMoves()+"            Points: "+game.getPoints()+"         -=") ;
 		System.out.println("=-                                             -=") ;
 		System.out.println("=================================================") ;
