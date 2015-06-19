@@ -63,36 +63,39 @@ public class Dog implements UserInterface{
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
 		// TODO Auto-generated method stub		
-		while (true) {
+		
 			System.out.print(question) ; 
 			Answer = new Scanner(System.in);
-			String input = Answer.nextLine() ;
-			for (String PossibleAnswer : possibleAnswers)
-				if (PossibleAnswer.equals(input))
-					return input;
-		}
-	}
+			String input = Answer.next() ;
+			
+			return input ; 
+			}
+
+		
+//	}
 
 	@Override
 	public MoveDirection getUserMove() {
 		// TODO Auto-generated method stub
 		//KeyListener Key = new SynchronizedKeyListener(this) ;
+		while(true) {
+		String question = "Direction ? " ;
+		String[] possibleAnswers = new String[4]; 
 		
-		synchronized (this) {
-			UserMoveChoice = null;
-			try {
-				while (UserMoveChoice == null){
-					this.wait();
-					System.out.println("dasd");
-				}
-				return UserMoveChoice;
-			} catch (InterruptedException e) {
-				System.out.println(e);
-			}
+		possibleAnswers[0] = "r";
+		possibleAnswers[1] = "l";
+		possibleAnswers[2] = "u";
+		possibleAnswers[3] = "d";
+		String direction = "Hallo";
+		
+		while(direction.length() != 1 ) 
+		direction = this.getUserInput (question,possibleAnswers) ;
+		
+		if (direction.charAt(0) == 'r' ) return MoveDirection.EAST ;
+		else if (direction.charAt(0) == 'l') return MoveDirection.WEST ;
+		else if (direction.charAt(0) == 'u') return MoveDirection.NORTH ;
+		else if (direction.charAt(0) == 'd') return MoveDirection.SOUTH ;
 		}
-		System.out.println("dasd");
-		
-		return UserMoveChoice ;
 	}
 	
 
@@ -133,16 +136,16 @@ public class Dog implements UserInterface{
 			System.out.print("|\n") ;
 			j = 0 ;
 			while(WIDTH > j){
-				if (game.getPieceAt(i, j) == 0 ) 
+				if (game.getPieceAt(j, i) == 0 ) 
 					System.out.print("|             ");
-				else if (game.getPieceAt(i,j) > 1000)
-					System.out.print("|    "+game.getPieceAt(i, j)+"     ");
-				else if(game.getPieceAt(i, j) > 100 )
-					System.out.print("|    "+game.getPieceAt(i, j)+"      ");
-				else if (game.getPieceAt(i,j) > 10 )
-					System.out.print("|     "+game.getPieceAt(i, j)+"      ");
+				else if (game.getPieceAt(j,i) > 1000)
+					System.out.print("|    "+game.getPieceAt(j, i)+"     ");
+				else if(game.getPieceAt(j, i) > 100 )
+					System.out.print("|    "+game.getPieceAt(j, i)+"      ");
+				else if (game.getPieceAt(j,i) > 10 )
+					System.out.print("|     "+game.getPieceAt(j, i)+"      ");
 				else
-					System.out.print("|     "+game.getPieceAt(i, j)+"       ");
+					System.out.print("|     "+game.getPieceAt(j, i)+"       ");
 				j++ ;
 			}
 			System.out.print("|\n") ;

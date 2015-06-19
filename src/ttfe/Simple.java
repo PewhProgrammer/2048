@@ -85,7 +85,6 @@ public class Simple implements SimulatorInterface {
 		}
 		
 		public int getPieceAt(int x,int y) {
-			//System.out.println("hallo"+x+y) ; 
 			return this.array[x][y]; 
 		}
 		
