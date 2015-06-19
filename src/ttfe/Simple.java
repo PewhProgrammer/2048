@@ -168,7 +168,8 @@ public class Simple implements SimulatorInterface {
 					j = 1 ;
 					while(this.height > j){
 						if (array[i][j] != 0) {
-						if (array[i][j-1] == 0) return true ;
+						if (array[i][j-1] == 0 ||
+								array[i][j-1] == array[i][j]) return true ;
 						}
 						j++;
 					}
@@ -180,7 +181,8 @@ public class Simple implements SimulatorInterface {
 					j = 0 ;
 					while(this.height-1 > j){
 						if (array[i][j] != 0) {
-						if (array[i][j+1] == 0) return true ;
+						if (array[i][j+1] == 0 || 
+								array[i][j+1] == array[i][j]) return true ;
 						}
 						j++;
 					}
@@ -193,7 +195,8 @@ public class Simple implements SimulatorInterface {
 					j = 0 ;
 					while(this.height > j){
 						if (array[i][j] != 0) {
-						if (array[i-1][j] == 0) return true ;
+						if (array[i-1][j] == 0 ||
+								array[i-1][j] == array[i][j]) return true ;
 						}
 						j++;
 					}
@@ -205,7 +208,8 @@ public class Simple implements SimulatorInterface {
 					j = 0 ;
 					while(this.height > j){
 						if (array[i][j] != 0) {
-						if (array[i+1][j] == 0) return true ; 
+						if (array[i+1][j] == 0 ||
+								array[i+1][j] == array[i][j]) return true ; 
 						}
 						j++;
 					}
@@ -294,7 +298,6 @@ public class Simple implements SimulatorInterface {
 					while (j >= 0) {
 						if (array[i][j] == 0) ;			// Muss nich zero tiles überprüfen
 						else {
-							System.out.println("here : " + i+j);
 						if (array[i][j+1] == array[i][j]) {   //mergeable 2 tiles
 							array[i][j+1] += array[i][j] ;		//überschreiben
 							this.points = array[i][j+1] +this.points ; 		//score
@@ -434,13 +437,15 @@ public class Simple implements SimulatorInterface {
 		
 		public void run(PlayerInterface player, UserInterface ui){
 		
-			ui.updateScreen(this);
-			while(this.isMovePossible()) {
+			while(this.isMovePossible(MoveDirection.WEST)) {
 				this.performMove( ( player.getPlayerMove(this,ui)) ) ;
+				ui.updateScreen(this);
+				if(this.isSpaceLeft())
 				this.addPiece() ; 
 				ui.updateScreen(this);
+			
 			}
-			//ui.showGameOver()
+			ui.showGameOverScreen(this) ;
 			
 		}
 	}

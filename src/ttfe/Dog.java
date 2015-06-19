@@ -1,57 +1,110 @@
 package ttfe;
 
-import ttfe.PlayerInterface;
 import ttfe.MoveDirection; 
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import ttfe.GUI;
+
 import java.util.Scanner;
-import java.io.* ;
 
 public class Dog implements UserInterface{
 
 	
-	private Scanner in;
+	private Scanner Answer;
 	String usermove ;
+	MoveDirection UserMoveChoice ;
 
 	public Dog(SimulatorInterface game , boolean gui){
-		if ( gui == false ) ;
 		
+	}
+	
+	private final class SynchronizedKeyListener implements KeyListener {
+		private final Dog G;
+
+		public SynchronizedKeyListener(Dog G) {
+			this.G = G;
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			/* Do nothing */
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			/* Do nothing */
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			synchronized (G) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					UserMoveChoice = MoveDirection.WEST;
+					break;
+				case KeyEvent.VK_RIGHT:
+					UserMoveChoice = MoveDirection.EAST;
+					break;
+				case KeyEvent.VK_UP:
+					UserMoveChoice = MoveDirection.NORTH;
+					break;
+				case KeyEvent.VK_DOWN:
+					UserMoveChoice = MoveDirection.SOUTH;
+					break;
+				default:
+					return;
+				}
+				G.notify();
+			}
+		}
 	}
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
-		// TODO Auto-generated method stub
-		possibleAnswers = new String[4] ;
-		possibleAnswers[1] = "r" ;
-		possibleAnswers[2] = "l";
-		possibleAnswers[3] = "u";
-		possibleAnswers[4] = "d";
-		int i = 0 ; 
-		
-		
-		in = new Scanner(System.in);
-		String input = in.nextLine() ;
-		while (4 > i) {
-		if (input == possibleAnswers[i]){
-			usermove = possibleAnswers[i] ;
-			}
-			i++ ;
+		// TODO Auto-generated method stub		
+		while (true) {
+			System.out.print(question) ; 
+			Answer = new Scanner(System.in);
+			String input = Answer.nextLine() ;
+			for (String PossibleAnswer : possibleAnswers)
+				if (PossibleAnswer.equals(input))
+					return input;
 		}
-		return input;
 	}
 
 	@Override
 	public MoveDirection getUserMove() {
 		// TODO Auto-generated method stub
-		if (usermove == "right") return MoveDirection.EAST;
-		if (usermove == "left") return MoveDirection.WEST;
-		if (usermove == "up")	return MoveDirection.NORTH;
-		if (usermove == "down")	return MoveDirection.SOUTH;
-		return null ; 
+		//KeyListener Key = new SynchronizedKeyListener(this) ;
+		
+		synchronized (this) {
+			UserMoveChoice = null;
+			try {
+				while (UserMoveChoice == null){
+					this.wait();
+					System.out.println("dasd");
+				}
+				return UserMoveChoice;
+			} catch (InterruptedException e) {
+				System.out.println(e);
+			}
+		}
+		System.out.println("dasd");
+		
+		return UserMoveChoice ;
 	}
+	
 
 	@Override
 	public void showGameOverScreen(SimulatorInterface game) {
 		// TODO Auto-generated method stub
-		if (game.isMovePossible() == false ) System.out.println("Game Over") ;
+		System.out.println("=================================================") ;
+		System.out.println("=-                                             -=") ;
+		System.out.println("=-                 Game Over                   -=") ;
+		System.out.println("=-       Moves: "+game.getNumMoves()+"            Points: "+game.getPoints()+"         -=") ;
+		System.out.println("=-                                             -=") ;
+		System.out.println("=================================================") ;
 	}
 
 	@Override
@@ -64,7 +117,45 @@ public class Dog implements UserInterface{
 	@Override
 	public void updateScreen(SimulatorInterface game) {
 		// TODO Auto-generated method stub
-		//game.run() ; 
+		int WIDTH = game.getBoardWidth() ;
+		int HEIGHT = game.getBoardHeight() ;
+		
+		System.out.print("              Moves: "+game.getNumMoves()+"   Points: "+game.getPoints() ) ;
+		System.out.print("\n") ;
+		int i = 0 ;
+		int j = 0 ;
+		while (WIDTH > i){
+			j = 0 ;
+			while(HEIGHT > j){
+				System.out.print("|-------------");
+				j++ ;
+			}
+			System.out.print("|\n") ;
+			j = 0 ;
+			while(HEIGHT > j){
+				if (game.getPieceAt(j, i) == 0 ) 
+					System.out.print("|             ");
+				else if (game.getPieceAt(j,i) > 1000)
+					System.out.print("|    "+game.getPieceAt(j, i)+"     ");
+				else if(game.getPieceAt(i, j) > 100 )
+					System.out.print("|    "+game.getPieceAt(j, i)+"      ");
+				else if (game.getPieceAt(i,j) > 10 )
+					System.out.print("|     "+game.getPieceAt(j, i)+"      ");
+				else
+					System.out.print("|     "+game.getPieceAt(j, i)+"       ");
+				j++ ;
+			}
+			System.out.print("|\n") ;
+			i++ ;
+		}
+		j = 0 ;
+		while(HEIGHT > j){
+			System.out.print("|-------------");
+			j++ ;
+		}
+		
+		System.out.print("|\n") ;
+		
 	}
 
 
