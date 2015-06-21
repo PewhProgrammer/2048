@@ -22,9 +22,12 @@ public class Dog implements UserInterface{
 		int i = 0 ;
 			
 			while (true) {
+				String input = "Test";
 				System.out.print(question) ; 
 				Answer = new Scanner(System.in);
-				String input = Answer.next();
+				if (Answer.hasNext() )
+					input = Answer.next();
+				
 				if (input.length() == 1){
 					i = 0;
 					while (possibleAnswers[i] != null) {

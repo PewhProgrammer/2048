@@ -23,14 +23,15 @@ public class Simple implements SimulatorInterface {
 			int n = 0 ;
 			int m = 2 ;
 			while (m > n) {
-				int p = r.nextInt(this.width) ;
-				int q = r.nextInt(this.height) ;
+				int p = this.r.nextInt(this.width) ;
+				int q = this.r.nextInt(this.height) ;
+				int z = this.r.nextInt(10) ;
 				if (array[p][q] == 0) {
-				if (this.r.nextInt(10) > 1 ){
-					this.array[r.nextInt(this.width)][r.nextInt(this.height)] = 2 ;
+				if (z >= 1 ){
+					this.array[p][q] = 2 ;
 				}
 				else
-					this.array[r.nextInt(this.width)][r.nextInt(this.height)] = 4 ;
+					this.array[p][q] = 4 ;
 				}
 				else m++ ;
 				n++ ;
@@ -41,11 +42,13 @@ public class Simple implements SimulatorInterface {
 	public void addPiece() {
 		int p = 0 ;
 		int q = 0 ;
+		int z = 0 ; 
 		while ( true ){
-			p = r.nextInt(this.width) ;
-			q = r.nextInt(this.height) ;
+			p = this.r.nextInt(this.width);
+			q = this.r.nextInt(this.height);
+			z = this.r.nextInt(10) ;
 			if (this.array[p][q] == 0 ){
-				if (this.r.nextInt(10) >= 1 ){
+				if (z >= 1 ){
 					this.array[p][q] = 2 ;
 					break;
 				}
