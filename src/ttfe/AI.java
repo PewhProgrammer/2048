@@ -41,6 +41,50 @@ public class AI implements PlayerInterface {
 		return game.getNumPieces();
 	}
 	
+	private int MultipleMove (SimulatorInterface game ,int k ){
+		//game = new Simple(WIDTH , HEIGHT , R) ;
+		int n = 0 ;
+		while ( 6 > n ) {
+		int z = r.nextInt(100) ;
+		
+		if(game.isSpaceLeft())
+			game.addPiece();
+		
+		if (game.isMovePossible(MoveDirection.WEST) 
+				|| game.isMovePossible(MoveDirection.SOUTH)
+				|| game.isMovePossible(MoveDirection.NORTH) ){
+				if (z <= 66 ){
+					game.performMove(MoveDirection.WEST);
+					chain[k][n] = MoveDirection.WEST ;
+				}
+				else if (z <= 88 ){
+					game.performMove(MoveDirection.SOUTH);
+					chain[k][n] = MoveDirection.SOUTH ;
+
+				}
+				else if (z <= 99 ){
+					game.performMove(MoveDirection.NORTH);
+					chain[k][n] = MoveDirection.NORTH ;
+
+				}
+				
+				}
+				else { 
+					game.performMove(MoveDirection.EAST);
+					chain[k][n] = MoveDirection.EAST ;
+				}
+		n++ ;
+		}
+		
+		System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+				game.getPieceAt(0, 0) + game.getPieceAt(1, 0) + game.getPieceAt(2, 0) + game.getPieceAt(3, 0) +"\n"
+				+ game.getPieceAt(0, 1) + game.getPieceAt(1, 1) + game.getPieceAt(2, 1) + game.getPieceAt(3, 1)+"\n"
+				+ game.getPieceAt(0, 2) + game.getPieceAt(1, 2) + game.getPieceAt(2, 2) + game.getPieceAt(3, 2)+"\n"
+				+ game.getPieceAt(0, 3) + game.getPieceAt(1, 3) + game.getPieceAt(2, 3) + game.getPieceAt(3, 3) ) ;
+		
+		return game.getPoints();
+	}
+	
 	private MoveDirection max(int x , int y , int z , int k){
 		if (x > y) 
 			if (x > z) 
@@ -61,6 +105,12 @@ public class AI implements PlayerInterface {
 			return MoveDirection.WEST ;
 		else 
 			return MoveDirection.EAST;
+	}
+	
+	private int max2 (int x , int y){
+		if (x > y)
+			return 1 ;
+		else return 2 ;
 	}
 	
 	private MoveDirection min (int x , int y , int z , int k){
@@ -99,20 +149,19 @@ public class AI implements PlayerInterface {
 		int hilfn = 0 ;
 		n=0;
 		
-//		while ( game.isMovePossible() ){
-//			
+		while ( 6 > n ){//game.isMovePossible() ){
+			
 //			direction = min( SingleMove(initiate(game2),MoveDirection.SOUTH) ,
 //					SingleMove(initiate(game2),MoveDirection.NORTH),
 //					SingleMove(initiate(game2),MoveDirection.WEST),
 //					SingleMove(initiate(game2),MoveDirection.EAST) ) ;
-//			
+			
+			game.performMove(chain[max2(MultipleMove(initiate(game2),1),1)][i])  ;
 //			game.performMove(direction) ;
 //			chain2[i] = direction ; 
-//			i++ ;
-//			System.out.println("here : " + game.getNumPieces());
-//			
-//			int z = r.nextInt(100) ;
+			i++ ;
 			
+			int z = r.nextInt(100) ;
 			
 			
 //			if (game.isMovePossible(MoveDirection.WEST) 
@@ -133,74 +182,74 @@ public class AI implements PlayerInterface {
 //			}
 //			else game.performMove(MoveDirection.EAST);
 			
-//			if (game.isSpaceLeft())
-//				game.addPiece();
-//			ui.updateScreen( game );
-//			n++ ; 
-//		}
+			if (game.isSpaceLeft())
+				game.addPiece();
+			ui.updateScreen( game );
+			n++ ; 
+		}
 	
 //////////////////////////////////
 		
-			while (10000 > n) {
-			R.setSeed(4711);
-			//r.setSeed(r.nextInt());
-			game2 = new Simple(HEIGHT,WIDTH,R) ;
-			i = 0 ; 
-			while ( game2.isMovePossible() ){
-			if (game2.isSpaceLeft())
-				game2.addPiece();
-			
-			int z = r.nextInt(100) ;
-			
-			if (game2.isMovePossible(MoveDirection.WEST) 
-			|| game2.isMovePossible(MoveDirection.SOUTH)
-			|| game2.isMovePossible(MoveDirection.NORTH) ){
-			if (z <= 66 ){
-				game2.performMove(MoveDirection.WEST);
-				chain[n][i] = MoveDirection.WEST ;
-			}
-			else if (z <= 88 ){
-				game2.performMove(MoveDirection.SOUTH);
-				chain[n][i] = MoveDirection.SOUTH ;
-			}
-			else if (z <= 99 ){
-				game2.performMove(MoveDirection.NORTH);
-				chain[n][i] = MoveDirection.NORTH ;
-			}
-			
-			}
-			else {
-				game2.performMove(MoveDirection.EAST);
-				chain[n][i] = MoveDirection.EAST ;
-				i++ ; 
-				game2.performMove(MoveDirection.WEST);
-				chain[n][i] = MoveDirection.WEST ;
-			}
-			
-			i++ ;
-			
-			}
-			
-			System.out.println("points "+max) ; 
-			if ( game2.getPoints() > max ){
-				max = game2.getPoints() ;
-				hilfn = n ; 
-			}
-			
-			n++ ;
-			
-			}
-			
-		
-			i = 0 ; 
-			game.addPiece();
-			while(game.isMovePossible()){
-				game.performMove(chain[hilfn][i]);
-				if (game.isSpaceLeft())
-				game.addPiece();
-				i++;
-				ui.updateScreen( game );
-			}
+//			while (10000 > n) {
+//			R.setSeed(4711);
+//			//r.setSeed(r.nextInt());
+//			game2 = new Simple(HEIGHT,WIDTH,R) ;
+//			i = 0 ; 
+//			while ( game2.isMovePossible() ){
+//			if (game2.isSpaceLeft())
+//				game2.addPiece();
+//			
+//			int z = r.nextInt(100) ;
+//			
+//			if (game2.isMovePossible(MoveDirection.WEST) 
+//			|| game2.isMovePossible(MoveDirection.SOUTH)
+//			|| game2.isMovePossible(MoveDirection.NORTH) ){
+//			if (z <= 66 ){
+//				game2.performMove(MoveDirection.WEST);
+//				chain[n][i] = MoveDirection.WEST ;
+//			}
+//			else if (z <= 88 ){
+//				game2.performMove(MoveDirection.SOUTH);
+//				chain[n][i] = MoveDirection.SOUTH ;
+//			}
+//			else if (z <= 99 ){
+//				game2.performMove(MoveDirection.NORTH);
+//				chain[n][i] = MoveDirection.NORTH ;
+//			}
+//			
+//			}
+//			else {
+//				game2.performMove(MoveDirection.EAST);
+//				chain[n][i] = MoveDirection.EAST ;
+//				i++ ; 
+//				game2.performMove(MoveDirection.WEST);
+//				chain[n][i] = MoveDirection.WEST ;
+//			}
+//			
+//			i++ ;
+//			
+//			}
+//			
+//			System.out.println("points "+max) ; 
+//			if ( game2.getPoints() > max ){
+//				max = game2.getPoints() ;
+//				hilfn = n ; 
+//			}
+//			
+//			n++ ;
+//			
+//			}
+//			
+//		
+//			i = 0 ; 
+//			game.addPiece();
+//			while(game.isMovePossible()){
+//				game.performMove(chain[hilfn][i]);
+//				if (game.isSpaceLeft())
+//				game.addPiece();
+//				i++;
+//				ui.updateScreen( game );
+//			}
 		
 		
 			

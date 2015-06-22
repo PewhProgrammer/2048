@@ -28,14 +28,13 @@ public class Dog implements UserInterface{
 				if (Answer.hasNextLine() )
 				input = Answer.nextLine();
 				
-				if (input.length() == 1){
 					i = 0;
 					while (i < possibleAnswers.length) {
 						
-						if ( possibleAnswers[i].charAt(0) == input.charAt(0) )
+						if ( possibleAnswers[i].equals(input)  )
 							return input ; 
 						i++ ;
-					}
+					
 				}
 			}
 	}

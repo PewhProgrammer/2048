@@ -16,7 +16,7 @@ public class TTFE {
 	 */
 	
 	//////////////////////////////  MUSS ICH NOCH UMÄNDERN ////////////////////
-	private static final boolean DEFAULT_USE_HUMAN = true;
+	private static final boolean DEFAULT_USE_HUMAN = false;
 
 	/**
 	 * If set to true the user will be asked what player should be chosen.
