@@ -17,6 +17,8 @@ public class AI implements PlayerInterface {
 	MoveDirection[][] chain = new MoveDirection[10000][10000] ;
 	MoveDirection[] chain2 = new MoveDirection[10] ;
 	
+	MoveDirection direction ;
+	
 	private int perv (SimulatorInterface game , MoveDirection way  ){
 		game = new Simple(WIDTH , HEIGHT , R) ;
 		if(game.isSpaceLeft())
@@ -61,32 +63,34 @@ public class AI implements PlayerInterface {
 		int hilfn = 0 ;
 		n=0;
 		
-		while ( 10000 > n ){
+		while ( 1000 > n ){
 			
-			
-			game.performMove(max( perv(game2,MoveDirection.SOUTH) ,
+			direction = max( perv(game2,MoveDirection.SOUTH) ,
 					perv(game2,MoveDirection.NORTH),
 					perv(game2,MoveDirection.WEST),
-					perv(game2,MoveDirection.EAST) ) ) ;
+					perv(game2,MoveDirection.EAST) ) ;
+			
+			game.performMove(direction) ;
+			//chain
 			int z = r.nextInt(100) ;
 			
-			if (game.isMovePossible(MoveDirection.WEST) 
-			|| game.isMovePossible(MoveDirection.SOUTH)
-			|| game.isMovePossible(MoveDirection.NORTH) ){
-			if (z <= 66 ){
-				game.performMove(MoveDirection.WEST);
-			}
-			else if (z <= 88 ){
-				game.performMove(MoveDirection.SOUTH);
-
-			}
-			else if (z <= 99 ){
-				game.performMove(MoveDirection.NORTH);
-
-			}
-			
-			}
-			else game.performMove(MoveDirection.EAST);
+//			if (game.isMovePossible(MoveDirection.WEST) 
+//			|| game.isMovePossible(MoveDirection.SOUTH)
+//			|| game.isMovePossible(MoveDirection.NORTH) ){
+//			if (z <= 66 ){
+//				game.performMove(MoveDirection.WEST);
+//			}
+//			else if (z <= 88 ){
+//				game.performMove(MoveDirection.SOUTH);
+//
+//			}
+//			else if (z <= 99 ){
+//				game.performMove(MoveDirection.NORTH);
+//
+//			}
+//			
+//			}
+//			else game.performMove(MoveDirection.EAST);
 			
 			if (game.isSpaceLeft())
 				game.addPiece();

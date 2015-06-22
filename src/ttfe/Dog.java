@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Dog implements UserInterface{
 
 	
-	private Scanner Answer;
+	private Scanner Answer = new Scanner(System.in);
 	String usermove ;
 	MoveDirection UserMoveChoice ;
 
@@ -15,7 +15,7 @@ public class Dog implements UserInterface{
 		
 	}
 	
-
+	
 	@Override
 	public String getUserInput(String question, String[] possibleAnswers) {
 		// TODO Auto-generated method stub	
@@ -24,9 +24,9 @@ public class Dog implements UserInterface{
 			while (true) {
 				String input = "Test";
 				System.out.print(question) ; 
-				Answer = new Scanner(System.in);
-				if (Answer.hasNext() )
-					input = Answer.next();
+				//Answer = new Scanner(System.in);
+				//if (Answer.hasNext() )
+				input = Answer.nextLine();
 				
 				if (input.length() == 1){
 					i = 0;
@@ -68,12 +68,12 @@ public class Dog implements UserInterface{
 	@Override
 	public void showGameOverScreen(SimulatorInterface game) {
 		// TODO Auto-generated method stub
-		System.out.println("=================================================") ;
-		System.out.println("=-                                             -=") ;
+		//System.out.println("=================================================") ;
+		//System.out.println("=-                                             -=") ;
 		System.out.println("=-                 GAME OVER                   -=") ;
 		System.out.println("=-       Moves: "+game.getNumMoves()+"            Points: "+game.getPoints()+"         -=") ;
-		System.out.println("=-                                             -=") ;
-		System.out.println("=================================================") ;
+		//System.out.println("=-                                             -=") ;
+		//System.out.println("=================================================") ;
 	}
 
 	@Override
