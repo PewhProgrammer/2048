@@ -14,13 +14,26 @@ public class AI implements PlayerInterface {
 	int WIDTH ;
 	int HEIGHT ;
 	int max ;
-	MoveDirection[][] chain = new MoveDirection[10000][10000] ;
-	MoveDirection[] chain2 = new MoveDirection[10] ;
+	//MoveDirection[][] chain = new MoveDirection[10000][10000] ;
+	MoveDirection[] chain2 = new MoveDirection[1000] ;
 	
 	MoveDirection direction ;
 	
-	private int perv (SimulatorInterface game , MoveDirection way  ){
+	private SimulatorInterface initiate (SimulatorInterface game) {
 		game = new Simple(WIDTH , HEIGHT , R) ;
+		int i = 0 ; 
+		if(game.isSpaceLeft())
+			game.addPiece();
+		while(chain2[i] != null){
+		game.performMove(chain2[i]) ;
+		i++ ;
+		}
+		
+		return game ;
+	}
+	
+	private int SingleMove (SimulatorInterface game , MoveDirection way  ){
+		//game = new Simple(WIDTH , HEIGHT , R) ;
 		if(game.isSpaceLeft())
 			game.addPiece();
 		game.performMove(way) ;
@@ -65,13 +78,15 @@ public class AI implements PlayerInterface {
 		
 		while ( 1000 > n ){
 			
-			direction = max( perv(game2,MoveDirection.SOUTH) ,
-					perv(game2,MoveDirection.NORTH),
-					perv(game2,MoveDirection.WEST),
-					perv(game2,MoveDirection.EAST) ) ;
+			direction = max( SingleMove(initiate(game2),MoveDirection.SOUTH) ,
+					SingleMove(initiate(game2),MoveDirection.NORTH),
+					SingleMove(initiate(game2),MoveDirection.WEST),
+					SingleMove(initiate(game2),MoveDirection.EAST) ) ;
 			
 			game.performMove(direction) ;
-			//chain
+			chain2[i] = direction ; 
+			i++ ;
+			
 			int z = r.nextInt(100) ;
 			
 //			if (game.isMovePossible(MoveDirection.WEST) 

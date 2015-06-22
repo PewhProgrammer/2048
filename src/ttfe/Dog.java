@@ -30,7 +30,9 @@ public class Dog implements UserInterface{
 				
 				if (input.length() == 1){
 					i = 0;
-					while (possibleAnswers[i] != null) {
+					System.out.println( "Here : "+possibleAnswers.length);
+					while (i < possibleAnswers.length) {
+						
 						if ( possibleAnswers[i].charAt(0) == input.charAt(0) )
 							return input ; 
 						i++ ;
