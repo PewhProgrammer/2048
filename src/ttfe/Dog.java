@@ -54,7 +54,7 @@ public class Dog implements UserInterface{
 		possibleAnswers[2] = "u";
 		possibleAnswers[3] = "d";
 		String direction = "Hallo";
-		
+		//
 		direction = this.getUserInput (question,possibleAnswers) ;
 		
 		if (direction.charAt(0) == 'r' ) return MoveDirection.EAST ;
