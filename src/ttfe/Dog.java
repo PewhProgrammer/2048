@@ -25,12 +25,11 @@ public class Dog implements UserInterface{
 				String input = "Test";
 				System.out.print(question) ; 
 				//Answer = new Scanner(System.in);
-				//if (Answer.hasNext() )
+				if (Answer.hasNextLine() )
 				input = Answer.nextLine();
 				
 				if (input.length() == 1){
 					i = 0;
-					System.out.println( "Here : "+possibleAnswers.length);
 					while (i < possibleAnswers.length) {
 						
 						if ( possibleAnswers[i].charAt(0) == input.charAt(0) )
