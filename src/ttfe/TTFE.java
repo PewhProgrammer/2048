@@ -131,8 +131,6 @@ public class TTFE {
 		// Create an instance of the user interface that is used to communicate
 		// with the user.
 		UserInterface ui = TTFEFactory.createUserInterface(game, useGUI);
-		
-		ui.updateScreen(game);
 
 		// If requested, the user is asked what player should be used.
 		if (DEBUG_ASK_USER) {

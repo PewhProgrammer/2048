@@ -441,14 +441,16 @@ public class Simple implements SimulatorInterface {
 		
 		
 		public void run(PlayerInterface player, UserInterface ui){
-		
+
+			ui.updateScreen(this);
+			
 			while(this.isMovePossible()) {
-				this.performMove( ( player.getPlayerMove(this,ui)) ) ;
+				if ( this.performMove( ( player.getPlayerMove(this,ui)) ) == true) {
 				ui.updateScreen(this);
 				if(this.isSpaceLeft())
-				this.addPiece() ; 
+					this.addPiece() ; 
 				ui.updateScreen(this);
-			
+				}
 			}
 			ui.showGameOverScreen(this) ;
 			

@@ -507,27 +507,7 @@ public class SimpleTests {
 		game2.setPieceAt(0, 4, 4);game2.setPieceAt(1, 4, 4);game2.setPieceAt(2, 4, 4);game2.setPieceAt(3, 4, 4);game2.setPieceAt(4, 4, 4);
 		assertTrue("FullisMovePossible has a malfunction" + game2.isMovePossible(), game2.isMovePossible()) ;
 	}
-	
-	@Test
-	public void testGameOverMovePossible() {
-		game.setPieceAt(0, 1, 131072);
-		game.setPieceAt(0, 2, 131072);
-		game.setPieceAt(0, 3, 131072);
-		game.setPieceAt(0, 0, 131072);
-		game.setPieceAt(1, 1, 131072);
-		game.setPieceAt(1, 2, 131072);
-		game.setPieceAt(1, 3, 131072);
-		game.setPieceAt(1, 0, 131072);
-		game.setPieceAt(3, 1, 131072);
-		game.setPieceAt(3, 2, 131072);
-		game.setPieceAt(3, 3, 131072);
-		game.setPieceAt(3, 0, 131072);
-		game.setPieceAt(2, 1, 131072);
-		game.setPieceAt(2, 2, 131072);
-		game.setPieceAt(2, 3, 131072);
-		game.setPieceAt(2, 0, 131072);
-		assertTrue("GameOverMovePossible has a malfunction " + game.isMovePossible() , game.isMovePossible() == false) ;
- 	}
+
 	
 	@Test
 	public void testcorner1() {
