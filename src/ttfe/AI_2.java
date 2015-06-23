@@ -13,8 +13,8 @@ public class AI_2 implements PlayerInterface {
 	int max ;
 	int k ;
 	
-	MoveDirection[][] chain = new MoveDirection[20000][200] ;
-	MoveDirection[] chain2 = new MoveDirection[10000] ;
+	MoveDirection[][] chain = new MoveDirection[30000][200] ;
+	MoveDirection[] chain2 = new MoveDirection[40000] ;
 	
 	MoveDirection direction ;
 	
@@ -522,8 +522,8 @@ public class AI_2 implements PlayerInterface {
 		this.max = 0 ; 
 		int n = 0 ;
 		int j = 0 ; 
-		int schleife = 50 ;
-		int p = 50 ;
+		int schleife = 15 ;
+		int p = 35 ;
 		
 		chain[0][0] = MoveDirection.EAST ;
 		//chain[0][1] = MoveDirection.WEST ;
@@ -636,8 +636,8 @@ public class AI_2 implements PlayerInterface {
 				schleife = 0 ;
 				}
 			else { 
-				schleife = 50 ; 
-				p = 50 ; 
+				schleife = 15 ; 
+				p = 35 ; 
 			}
 			
 			n = 0 ; 
@@ -654,9 +654,15 @@ public class AI_2 implements PlayerInterface {
 				if ( game.performMove(chain[x][i]) == true) 
 					game.addPiece();
 				chain2[k] = chain[x][i] ;
+//				System.out.println("Das sind die ersten Ergbenisse oben : \n" +
+//						game.getPieceAt(0, 0) + game.getPieceAt(1, 0) + game.getPieceAt(2, 0) + game.getPieceAt(3, 0) +"\n"
+//						+ game.getPieceAt(0, 1) + game.getPieceAt(1, 1) + game.getPieceAt(2, 1) + game.getPieceAt(3, 1)+"\n"
+//						+ game.getPieceAt(0, 2) + game.getPieceAt(1, 2) + game.getPieceAt(2, 2) + game.getPieceAt(3, 2)+"\n"
+//						+ game.getPieceAt(0, 3) + game.getPieceAt(1, 3) + game.getPieceAt(2, 3) + game.getPieceAt(3, 3) ) ;
 				i++ ;
 				k++ ; 
 				n++ ; 
+				//ui.updateScreen(game);
 			}
 		j++;
 		}
