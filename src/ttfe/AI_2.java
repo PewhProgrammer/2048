@@ -521,7 +521,6 @@ public class AI_2 implements PlayerInterface {
 		this.HEIGHT = game.getBoardHeight() ;
 		this.max = 0 ; 
 		int n = 0 ;
-		int j = 0 ; 
 		int schleife = 15 ;
 		int p = 35 ;
 		
@@ -664,7 +663,7 @@ public class AI_2 implements PlayerInterface {
 				n++ ; 
 				//ui.updateScreen(game);
 			}
-		j++;
+			ui.updateScreen(game) ;
 		}
 		ui.updateScreen(game);
 		return null ; 

@@ -452,6 +452,7 @@ public class Simple implements SimulatorInterface {
 				ui.updateScreen(this);
 				}
 			}
+			ui.updateScreen(this);
 			ui.showGameOverScreen(this) ;
 			
 		}
