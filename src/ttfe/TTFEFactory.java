@@ -2,6 +2,7 @@ package ttfe;
 
 import java.util.Random;
 
+import AI.Main;
 import ttfe.PlayerInterface;
 import ttfe.SimulatorInterface;
 import ttfe.UserInterface;
@@ -72,7 +73,8 @@ public class TTFEFactory {
 		if (human == true) 
 			player = new Cat() ;
 		else
-			player = new AI_2() ;
+			player = new Main() ;
+			//player = new AI_2();
 		
 		return player ;
 	}

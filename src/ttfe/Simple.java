@@ -11,11 +11,9 @@ public class Simple implements SimulatorInterface {
 	int height = 0 ;
 	Random r ;
 	int n = 0 ; 
-	// TODO: Implement me.
 	int[][] array ;
 	
 	public Simple(int width, int height,Random r) {
-		// TODO Auto-generated constructor stub
 			this.width = width ;
 			this.height = height ; 
 			this.array = new int[this.width][this.height] ;
@@ -36,6 +34,33 @@ public class Simple implements SimulatorInterface {
 				else m++ ;
 				n++ ;
 			}
+	}
+	
+	public Simple clone(){
+		Simple option = new Simple(width,height,r);
+		int[][] arr = cloneArray(this.getArray()) ;
+		option.setArray(arr);
+		option.moves = this.moves ;
+		option.n = this.n ;
+		option.points = this.points ;
+		return option ; 
+	}
+	
+	public static int[][] cloneArray(int[][] src){
+		int length =src.length ;
+		int[][] target = new int[length][src[0].length] ;
+		for(int i = 0;i < length ; i++){
+			System.arraycopy(src[i],0, target[i],0,src[i].length);
+		}
+		return target ;
+	}
+	
+	public int[][] getArray(){
+		return this.array ;
+	}
+	
+	public void setArray(int[][] array){
+		this.array = array ;
 	}
 	
 	
@@ -445,8 +470,8 @@ public class Simple implements SimulatorInterface {
 			ui.updateScreen(this);
 			
 			while(this.isMovePossible()) {
-				if ( this.performMove( ( player.getPlayerMove(this,ui)) ) == true) {
-				ui.updateScreen(this);
+				if (this.performMove( ( player.getPlayerMove(this,ui)) ))  {
+				//ui.updateScreen(this);
 				if(this.isSpaceLeft())
 					this.addPiece() ; 
 				ui.updateScreen(this);

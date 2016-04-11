@@ -6,8 +6,16 @@ package ttfe;
  *
  */
 public enum MoveDirection {
-	NORTH,
-	EAST,
-	SOUTH,
-	WEST,
+	NORTH(0),
+	EAST(1),
+	SOUTH(2),
+	WEST(3);
+	
+	private final int value;
+	
+	MoveDirection(final int newValue){
+		value = newValue ;
+	}
+	
+	public int getValue(){return value ;}
 }
