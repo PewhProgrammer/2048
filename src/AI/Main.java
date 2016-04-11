@@ -10,7 +10,7 @@ public class Main implements PlayerInterface{
 	private FutureTree ai ;
 	private AIGoals goals ;
 	public Main(){
-		this.ai = new FutureTree(17,0.9) ;
+		this.ai = new FutureTree(4,0.6) ;
 		this.goals = new AIGoals();
 	}
 

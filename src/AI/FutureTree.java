@@ -32,16 +32,17 @@ public class FutureTree {
 			,AIGoals goals){
 		simulations = 0;
 		
-		for(MoveDirection dir : this.mMovedDirections){
-			
-		}
 		
 		DepthSearchResult result = determineScore((Simple)game,0,goals);
-		System.out.println("Action determined with: "+simulations+ " simulations "
-				+ " Action: " + result.mDirection.toString() + " Score : " + 
-				result.mScore) ;
-		this.mMovedDirections.add(result.mDirection); // how to get SEED
+		if(mMovedDirections.size() == 0){
+			simulations++ ;
+		}
 		
+		//System.out.println("Action determined with: "+simulations+ " simulations "
+		//		+ " Action: " + result.mDirection.toString() + " Score : " + 
+		//		result.mScore) ;
+		this.mMovedDirections.add(result.mDirection); // how to get SEED
+		System.out.println("Max: " + goals.max1);
 		return result.mDirection ;
 	}
 	
@@ -62,6 +63,12 @@ public class FutureTree {
 			simulations++ ;
 			Simple simulation = ((Simple)game).clone() ;
 			
+			for(MoveDirection dir : this.mMovedDirections){
+				simulation.performMove(dir);
+				if(simulation.isSpaceLeft())
+					simulation.addPiece() ; 
+			}
+			
 			MoveDirection dir = (MoveDirection)this.directions.get(i);
 			
 			if(!simulation.performMove(dir))
@@ -73,7 +80,7 @@ public class FutureTree {
 			depth++ ;
 			double Score = simulation.getPoints() ;
 			if(goals.isCornered())
-				Score = Score * 10;
+				Score = Score * 2;
 		
 			Score += determineScore(simulation,depth,goals).mScore * DEPTH_DAMPENING ;
 		
@@ -81,7 +88,9 @@ public class FutureTree {
 				bestBranchResult = new DepthSearchResult(Score,dir);
 				
 			}
+		
 		}
+	
 		return bestBranchResult ;
 		
 		

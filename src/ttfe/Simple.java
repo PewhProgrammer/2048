@@ -37,12 +37,9 @@ public class Simple implements SimulatorInterface {
 	}
 	
 	public Simple clone(){
+		Random r = new Random(4711);
 		Simple option = new Simple(width,height,r);
 		int[][] arr = cloneArray(this.getArray()) ;
-		option.setArray(arr);
-		option.moves = this.moves ;
-		option.n = this.n ;
-		option.points = this.points ;
 		return option ; 
 	}
 	

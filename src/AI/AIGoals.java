@@ -1,11 +1,11 @@
 package AI;
 
 import ttfe.Simple;
-import ttfe.SimulatorInterface;
 
 public class AIGoals {
 	
 	private boolean mFlagCorner = false ;
+	public int max1 = 0;
 	
 	public void update(Simple game){
 		int[][] board = game.getArray() ;
@@ -15,6 +15,7 @@ public class AIGoals {
 			for(int j = 0;j < game.getBoardWidth();j++){
 				if(board[i][j] > max){
 					max = board[i][j] ;
+					this.max1 = max ; 
 					pos = new Position(i,j);
 				}
 			}
