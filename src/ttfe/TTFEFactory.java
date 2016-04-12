@@ -73,8 +73,8 @@ public class TTFEFactory {
 		if (human == true) 
 			player = new Cat() ;
 		else
-			player = new Main() ;
-			//player = new AI_2();
+			//player = new Main() ;
+			player = new AI_2();
 		
 		return player ;
 	}

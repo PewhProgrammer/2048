@@ -32,6 +32,12 @@ public class FutureTree {
 			,AIGoals goals){
 		simulations = 0;
 		
+		/*for(MoveDirection dir : this.mMovedDirections){
+			simulation.performMove(dir);
+			if(simulation.isSpaceLeft())
+				simulation.addPiece() ; 
+		}*/
+		
 		
 		DepthSearchResult result = determineScore((Simple)game,0,goals);
 		if(mMovedDirections.size() == 0){
@@ -63,11 +69,6 @@ public class FutureTree {
 			simulations++ ;
 			Simple simulation = ((Simple)game).clone() ;
 			
-			for(MoveDirection dir : this.mMovedDirections){
-				simulation.performMove(dir);
-				if(simulation.isSpaceLeft())
-					simulation.addPiece() ; 
-			}
 			
 			MoveDirection dir = (MoveDirection)this.directions.get(i);
 			
